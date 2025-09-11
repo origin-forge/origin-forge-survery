@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-background: white;
+  --color-foreground: black;
+  --color-card: white;
+  --color-card-foreground: black;
+  --color-popover: white;
+  --color-popover-foreground: black;
+  --color-primary: #fbbf24;
+  --color-primary-foreground: black;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #171717;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
+  --color-accent: #fbbf24;
+  --color-accent-foreground: black;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: white;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #fbbf24;
+  --radius: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: white;
+  color: black;
+  font-family: "Inter", sans-serif;
+}
+
+.font-gaming {
+  font-family: "Orbitron", monospace;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gaming-border {
+  border: 2px solid #fbbf24;
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
+}
+
+.gaming-glow {
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+}
+
+.gaming-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.gaming-card:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 20px 25px -5px rgba(251, 191, 36, 0.2);
+}
+
+.hexagon {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+}
+
+.gaming-pattern {
+  background-image: radial-gradient(
+      circle at 25px 25px,
+      rgba(255, 193, 7, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75px 75px,
+      rgba(255, 193, 7, 0.05) 2px,
+      transparent 2px
+    );
+  background-size: 100px 100px;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Modal animations */
+@keyframes zoom-in-95 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation-duration: 150ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+.zoom-in-95 {
+  animation-name: zoom-in-95;
+}
+
+.duration-300 {
+  animation-duration: 300ms;
+}
