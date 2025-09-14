@@ -86,23 +86,24 @@ const Hero: React.FC = () => {
 
                 {/* Platform Icons */}
                 <div className="relative flex justify-center items-center mt-4 h-32 sm:h-36 w-full">
+                    {/* Move ps.svg to a random, leftmost position near 'FORGE' */}
                     <div
                         style={{
                             position: 'absolute',
-                            top: '2px', // move to vertical middle of text
-                            left: '10%',
-                            width: '160px',
-                            height: '130px',
-                            transform: 'rotate(-20deg)',
-                            opacity: 1,
-                            zIndex: 2,
+                            left: '2vw',
+                            top: '-13vw',
+                            width: '120px',
+                            height: '120px',
+                            transform: 'rotate(-32deg) scale(1.10)',
+                            opacity: 0.98,
+                            zIndex: 5,
                         }}
                     >
                         <Image
                             src="/ps.svg"
                             alt="PlayStation"
-                            width={160}
-                            height={10}
+                            width={120}
+                            height={120}
                         />
                     </div>
                     <div
@@ -128,16 +129,18 @@ const Hero: React.FC = () => {
                         style={{
                             position: 'absolute',
                             right: '12%',
-                            top: '20%',
-                            transform: 'rotate(-7deg) scale(1.32)',
+                            top: '10%',
+                            width: '120px',
+                            height: '120px',
+                            transform: 'rotate(-7deg) scale(1.10)',
                             zIndex: 1,
                         }}
                     >
                         <Image
                             src="/xbox.svg"
                             alt="Xbox"
-                            width={110}
-                            height={90}
+                            width={120}
+                            height={120}
                         />
                     </div>
                 </div>

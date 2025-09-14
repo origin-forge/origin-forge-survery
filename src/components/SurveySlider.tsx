@@ -1,24 +1,61 @@
 import React, { useState } from "react";
 import { surveyQuestions } from "../data/surveyQuestions";
+import { saveSurveyResponse } from "../lib/supabase";
 
 const pixelPanel =
   "border-4 border-yellow-700 bg-yellow-100 shadow-lg rounded-lg p-6 pixel-border";
 const pixelButton =
   "hero-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition px-6 py-2 mt-4";
 
+type Answers = Record<number, string | string[]>;
+
 export default function SurveySlider({ onClose }: { onClose?: () => void }) {
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<any>({});
+  const [answers, setAnswers] = useState<Answers>({});
   const [showEnd, setShowEnd] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
-  const handleOption = (qid: number, value: string) => {
-    setAnswers((prev: any) => ({ ...prev, [qid]: value }));
-    if (step < surveyQuestions.length - 1) {
-      setTimeout(() => setStep((s) => s + 1), 350);
-    } else {
+  const handleOption = async (qid: number, value: string) => {
+    const updated = { ...answers, [qid]: value };
+    setAnswers(updated);
+    if (step === surveyQuestions.length - 1) {
+      setShowLoader(true);
+      // Calculate total score from selected options
+      let totalScore = 0;
+      for (const q of surveyQuestions) {
+        const ans = updated[q.id];
+        if (q.options && ans) {
+          if (Array.isArray(ans)) {
+            for (const v of ans) {
+              const opt = q.options.find(o => o.value === v);
+              if (opt && opt.points) totalScore += opt.points;
+            }
+          } else {
+            const opt = q.options.find(o => o.value === ans);
+            if (opt && opt.points) totalScore += opt.points;
+          }
+        }
+      }
+      await saveSurveyResponse(updated, totalScore);
+      setShowLoader(false);
       setTimeout(() => setShowEnd(true), 350);
+    } else {
+      setTimeout(() => setStep((s) => s + 1), 350);
     }
   };
+
+  if (showLoader) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+        <div className="relative z-10 flex flex-col items-center justify-center">
+          <div className="w-20 h-20 border-8 border-yellow-400 border-t-transparent rounded-full animate-spin mb-6" />
+          <div className="text-2xl font-bold text-yellow-400 mb-2 pixel-font">Submitting your responses...</div>
+          <div className="text-yellow-200 text-lg">Please wait</div>
+        </div>
+      </div>
+    );
+  }
 
   if (showEnd) {
     return (
@@ -50,7 +87,9 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
             className="flex flex-col items-center gap-2 mt-4"
             onSubmit={e => {
               e.preventDefault();
-              const email = (e.target as any).elements.email.value;
+              const form = e.target as HTMLFormElement;
+              const emailInput = form.elements.namedItem('email') as HTMLInputElement | null;
+              const email = emailInput?.value;
               if (email) handleOption(q.id, email);
             }}
           >
@@ -72,7 +111,9 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
             className="flex flex-col items-center gap-2 mt-4"
             onSubmit={e => {
               e.preventDefault();
-              const text = (e.target as any).elements.textanswer.value;
+              const form = e.target as HTMLFormElement;
+              const textInput = form.elements.namedItem('textanswer') as HTMLTextAreaElement | null;
+              const text = textInput?.value;
               if (text) handleOption(q.id, text);
             }}
           >

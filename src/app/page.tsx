@@ -2,25 +2,18 @@
 
 
 import { useState } from 'react';
-import type { SurveyAnswers } from '@/data/surveyQuestions';
+
 import Hero from '@/components/Hero';
+import dynamic from 'next/dynamic';
+const SurveySlider = dynamic(() => import('@/components/SurveySlider'), { ssr: false });
 
 export default function Home() {
   const [showSurvey, setShowSurvey] = useState(false)
 
-  const handleSurveyComplete = (answers: SurveyAnswers) => {
-    console.log('Survey completed:', answers)
-    // Store answers in JSON (will implement proper storage)
-    localStorage.setItem('surveyAnswers', JSON.stringify({
-      answers,
-      timestamp: new Date().toISOString()
-    }))
-  }
 
   if (showSurvey) {
     return (
-      <Survey 
-        onComplete={handleSurveyComplete}
+      <SurveySlider 
         onClose={() => setShowSurvey(false)}
       />
     )
