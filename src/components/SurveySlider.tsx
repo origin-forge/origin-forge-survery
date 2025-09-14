@@ -3,9 +3,9 @@ import { surveyQuestions } from "../data/surveyQuestions";
 import { saveSurveyResponse } from "../lib/supabase";
 
 const pixelPanel =
-  "border-4 border-yellow-700 bg-yellow-100 shadow-lg rounded-lg p-6 pixel-border";
+  "border-4 border-yellow-700 bg-yellow-100 shadow-lg rounded-lg p-4 sm:p-6 pixel-border w-full max-w-lg";
 const pixelButton =
-  "hero-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition px-6 py-2 mt-4";
+  "hero-btn w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition px-4 sm:px-6 py-2 mt-4 text-base sm:text-lg";
 
 type Answers = Record<number, string | string[]>;
 
@@ -46,12 +46,12 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
 
   if (showLoader) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-0">
         <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-        <div className="relative z-10 flex flex-col items-center justify-center">
-          <div className="w-20 h-20 border-8 border-yellow-400 border-t-transparent rounded-full animate-spin mb-6" />
-          <div className="text-2xl font-bold text-yellow-400 mb-2 pixel-font">Submitting your responses...</div>
-          <div className="text-yellow-200 text-lg">Please wait</div>
+        <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-xs sm:max-w-md mx-auto">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 border-8 border-yellow-400 border-t-transparent rounded-full animate-spin mb-6" />
+          <div className="text-xl sm:text-2xl font-bold text-yellow-400 mb-2 pixel-font text-center">Submitting your responses...</div>
+          <div className="text-yellow-200 text-base sm:text-lg text-center">Please wait</div>
         </div>
       </div>
     );
@@ -59,11 +59,11 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
 
   if (showEnd) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-0">
         <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-        <div className={`${pixelPanel} relative z-10 text-center max-w-md mx-auto`}>
-          <h2 className="text-3xl font-bold mb-2 pixel-font text-amber-400">Coming Soon!</h2>
-          <p className="mb-4 text-lg text-yellow-800">OriginForge.games survey results and rewards are on the way!</p>
+        <div className={`${pixelPanel} relative z-10 text-center w-full max-w-xs sm:max-w-md mx-auto`}>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 pixel-font text-amber-400">Coming Soon!</h2>
+          <p className="mb-4 text-base sm:text-lg text-yellow-800">OriginForge.games survey results and rewards are on the way!</p>
           <div className="flex justify-center mt-4">
             <button className={pixelButton} onClick={onClose}>Back to Home</button>
           </div>
@@ -74,13 +74,13 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
 
   const q = surveyQuestions[step];
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-0">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-      <div className={`${pixelPanel} relative z-10 max-w-lg w-full mx-auto text-center animate-fade-in`}>
-        <div className="mb-2 text-xs text-yellow-700 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>Question {step + 1} / {surveyQuestions.length}</div>
-        {q.gameTitle && <div className="text-lg font-bold mb-1 pixel-font text-yellow-600">{q.gameTitle}</div>}
-        <div className="text-2xl font-extrabold mb-2" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif', color: '#181818', letterSpacing: '0.01em'}}>{q.question}</div>
-        {q.description && <div className="mb-2 text-base text-yellow-900 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>{q.description}</div>}
+      <div className={`${pixelPanel} relative z-10 w-full max-w-xs sm:max-w-lg mx-auto text-center animate-fade-in`}>
+        <div className="mb-2 text-xs sm:text-sm text-yellow-700 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>Question {step + 1} / {surveyQuestions.length}</div>
+        {q.gameTitle && <div className="text-base sm:text-lg font-bold mb-1 pixel-font text-yellow-600">{q.gameTitle}</div>}
+        <div className="text-lg sm:text-2xl font-extrabold mb-2" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif', color: '#181818', letterSpacing: '0.01em'}}>{q.question}</div>
+        {q.description && <div className="mb-2 text-sm sm:text-base text-yellow-900 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>{q.description}</div>}
         {q.humor && <div className="mb-2 text-xs italic text-yellow-700 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>{q.humor}</div>}
         {q.type === 'email' ? (
           <form
@@ -98,11 +98,11 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
               name="email"
               required
               autoFocus
-              className="block w-full max-w-xs mx-auto rounded border-2 border-yellow-700 bg-yellow-50 text-black text-base font-sans px-4 py-2 pixel-border outline-none focus:ring-2 focus:ring-yellow-400"
+              className="block w-full max-w-xs mx-auto rounded border-2 border-yellow-700 bg-yellow-50 text-black text-base font-sans px-3 sm:px-4 py-2 pixel-border outline-none focus:ring-2 focus:ring-yellow-400"
               placeholder="Enter your email"
               style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}
             />
-            <button type="submit" className={pixelButton + " text-base font-bold mt-2"}>
+            <button type="submit" className={pixelButton + " font-bold mt-2"}>
               Next
             </button>
           </form>
@@ -122,11 +122,11 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
               required={q.required}
               autoFocus
               rows={3}
-              className="block w-full max-w-xs mx-auto rounded border-2 border-yellow-700 bg-yellow-50 text-black text-base font-sans px-4 py-2 pixel-border outline-none focus:ring-2 focus:ring-yellow-400"
+              className="block w-full max-w-xs mx-auto rounded border-2 border-yellow-700 bg-yellow-50 text-black text-base font-sans px-3 sm:px-4 py-2 pixel-border outline-none focus:ring-2 focus:ring-yellow-400"
               placeholder="Type your answer..."
               style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}
             />
-            <button type="submit" className={pixelButton + " text-base font-bold mt-2"}>
+            <button type="submit" className={pixelButton + " font-bold mt-2"}>
               Next
             </button>
           </form>
@@ -140,7 +140,7 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
                   (answers[q.id] === opt.value
                     ? " ring-4 ring-yellow-400 bg-yellow-300 text-[#181818]"
                     : " bg-yellow-100 text-[#181818] hover:bg-yellow-200 hover:scale-[1.04] hover:shadow-pixel focus:bg-yellow-200 focus:scale-[1.04] focus:shadow-pixel") +
-                  " text-base font-bold pixel-font leading-tight px-6 py-2 my-1 border-2 border-yellow-700 pixel-border transition-all duration-150 outline-none"
+                  " font-bold pixel-font leading-tight px-4 sm:px-6 py-2 my-1 border-2 border-yellow-700 pixel-border transition-all duration-150 outline-none"
                 }
                 style={{
                   letterSpacing: '0.01em',
