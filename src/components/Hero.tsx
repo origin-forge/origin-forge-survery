@@ -1,12 +1,15 @@
 
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import "../app/press-start-font.css";
 
 
 const Hero: React.FC = () => {
     const textRef = useRef<HTMLDivElement>(null);
+    const [showSurvey, setShowSurvey] = useState(false);
+    const SurveySlider = dynamic(() => import('./SurveySlider'), { ssr: false });
 
 
 
@@ -67,13 +70,19 @@ const Hero: React.FC = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-                    <a href="#" className="hero-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition">
+                    <button
+                        className="hero-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition"
+                        onClick={() => setShowSurvey(true)}
+                    >
                         Take Survey
-                    </a>
+                    </button>
                     <a href="#" className="hero-btn bg-white text-[#B37B0D] font-bold shadow-lg pixel-border hover:bg-yellow-50 transition">
                         Learn More
                     </a>
                 </div>
+                {showSurvey && (
+                    <SurveySlider onClose={() => setShowSurvey(false)} />
+                )}
 
                 {/* Platform Icons */}
                 <div className="relative flex justify-center items-center mt-4 h-32 sm:h-36 w-full">
