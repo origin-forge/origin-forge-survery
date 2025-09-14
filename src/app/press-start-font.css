@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P:wght@400&display=swap');
+
+:root {
+  --font-press-start: 'Press Start 2P', cursive, sans-serif;
+}
+
+body, html {
+  font-family: var(--font-press-start);
+}
+
+.font-press-start {
+  font-family: var(--font-press-start) !important;
+}

@@ -1,24 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Orbitron, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ['200', '300', '400', '500', '600'],
-});
-
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  weight: ['400', '700', '900'],
-});
-
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ['200', '300', '400', '500', '600'],
-});
+import "./press-start-font.css";
 
 export const metadata: Metadata = {
   title: "OriginForge Games Survey - Shape the Future of Gaming Identity",
@@ -53,9 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${orbitron.variable} ${jetbrains.variable} antialiased`}
-      >
+      <body className="antialiased font-press-start">
         {children}
       </body>
     </html>
