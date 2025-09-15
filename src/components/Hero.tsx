@@ -91,6 +91,18 @@ const Hero: React.FC = () => {
                     <a href="/learn" className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-white text-[#B37B0D] font-bold shadow-lg pixel-border hover:bg-yellow-50 transition md:w-full">
                         Learn More
                     </a>
+                    {/* Platform Icons Row */}
+                    <div className="flex flex-row gap-4 justify-center items-center mt-4 w-full">
+                        <span className="inline-flex items-center justify-center w-24 h-24 transition group">
+                            <Image src="/ps.svg" alt="PlayStation" width={110} height={110} className="transition group-hover:grayscale-0 grayscale" />
+                        </span>
+                        <span className="inline-flex items-center justify-center w-20 h-20 transition group">
+                            <Image src="/steam.svg" alt="Steam" width={80} height={80} className="transition grayscale group-hover:grayscale-0 group-hover:brightness-0 group-hover:invert" style={{ filter: 'grayscale(1) brightness(0.7)' }} />
+                        </span>
+                        <span className="inline-flex items-center justify-center w-20 h-20 transition group">
+                            <Image src="/xbox.svg" alt="Xbox" width={80} height={80} className="transition group-hover:grayscale-0 grayscale" />
+                        </span>
+                    </div>
                 </div>
                 {/* Ready Modal */}
                 {showReadyModal && (
@@ -114,73 +126,6 @@ const Hero: React.FC = () => {
                 )}
 
                 {/* Platform Icons */}
-                <div className="relative flex justify-center items-center mt-2 sm:mt-4 h-24 sm:h-32 md:h-36 w-full">
-                    {/* ps.svg responsive */}
-                    <div
-                        style={{
-                            position: 'absolute',
-                            left: 'clamp(0.5vw, 2vw, 3vw)',
-                            top: 'clamp(-22vw, -13vw, -7vw)',
-                            width: 'clamp(40px, 13vw, 120px)',
-                            height: 'clamp(40px, 13vw, 120px)',
-                            transform: 'rotate(-32deg) scale(1.10)',
-                            opacity: 0.98,
-                            zIndex: 5,
-                        }}
-                    >
-                        <Image
-                            src="/ps.svg"
-                            alt="PlayStation"
-                            width={0}
-                            height={0}
-                            style={{ width: '100%', height: '100%' }}
-                            sizes="(max-width: 600px) 40px, (max-width: 900px) 90px, 120px"
-                        />
-                    </div>
-                    {/* steam.svg responsive */}
-                    <div
-                        style={{
-                            position: 'absolute',
-                            left: '50%',
-                            top: '40%',
-                            width: 'clamp(32px, 8vw, 85px)',
-                            height: 'clamp(32px, 8vw, 88px)',
-                            transform: 'translateX(-50%) rotate(4.49deg)',
-                            opacity: 1,
-                            zIndex: 4,
-                        }}
-                    >
-                        <Image
-                            src="/steam.svg"
-                            alt="Steam"
-                            width={0}
-                            height={0}
-                            style={{ width: '100%', height: '100%' }}
-                            sizes="(max-width: 600px) 32px, (max-width: 900px) 60px, 85px"
-                        />
-                    </div>
-                    {/* xbox.svg responsive */}
-                    <div
-                        style={{
-                            position: 'absolute',
-                            right: 'clamp(2vw, 12%, 16vw)',
-                            top: 'clamp(4vw, 10%, 16vw)',
-                            width: 'clamp(40px, 13vw, 120px)',
-                            height: 'clamp(40px, 13vw, 120px)',
-                            transform: 'rotate(-7deg) scale(1.10)',
-                            zIndex: 1,
-                        }}
-                    >
-                        <Image
-                            src="/xbox.svg"
-                            alt="Xbox"
-                            width={0}
-                            height={0}
-                            style={{ width: '100%', height: '100%' }}
-                            sizes="(max-width: 600px) 40px, (max-width: 900px) 90px, 120px"
-                        />
-                    </div>
-                </div>
             </div>
     </section>
     );
