@@ -87,7 +87,7 @@ const Hero: React.FC = () => {
                     >
                         Take Survey
                     </button>
-                    <a href="#" className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-white text-[#B37B0D] font-bold shadow-lg pixel-border hover:bg-yellow-50 transition md:w-full">
+                    <a href="/learn" className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-white text-[#B37B0D] font-bold shadow-lg pixel-border hover:bg-yellow-50 transition md:w-full">
                         Learn More
                     </a>
                 </div>
