@@ -1,8 +1,14 @@
+import Link from "next/link";
+import Image from "next/image";
+
 export default function LearnPage() {
   return (
     <div className="min-h-screen flex bg-[#f7e8c3]">
       {/* Sidebar */}
       <aside className="w-64 min-w-[200px] max-w-xs bg-white border-r border-yellow-300 p-6 flex flex-col gap-6 shadow-lg text-black">
+        <Link href="/" className="mb-6 flex items-center" aria-label="Home">
+          <Image src="/logo.svg" alt="OriginForge Logo" width={40} height={40} className="mr-2" />
+        </Link>
         <h2 className="text-xl font-bold mb-2">Docs</h2>
         <nav className="flex flex-col gap-3 text-base">
           <a href="#overview" className="hover:text-yellow-700 transition">Overview</a>

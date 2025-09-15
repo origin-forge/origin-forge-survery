@@ -8,7 +8,7 @@ export default function SurveyPage() {
       {/* SVG Background */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
-          src="/bg.svg"
+          src="/bg.png"
           alt="Background pattern"
           fill
           className="object-cover"
