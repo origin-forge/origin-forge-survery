@@ -16,7 +16,7 @@ export default function SurveyPage() {
           priority
         />
       </div>
-      <div className="relative z-10 w-full max-w-2xl mx-auto p-4">
+      <div className="relative z-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto px-2 sm:px-4 py-4 flex flex-col items-center justify-center">
         <SurveySlider />
       </div>
     </main>
