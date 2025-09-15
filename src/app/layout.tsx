@@ -1,6 +1,9 @@
+
+
 import type { Metadata } from "next";
 import "./globals.css";
 import "./press-start-font.css";
+import RouteLoader from "@/components/RouteLoader";
 
 export const metadata: Metadata = {
   title: "OriginForge Games Survey - Shape the Future of Gaming Identity",
@@ -28,16 +31,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className="antialiased font-press-start">
-        {children}
+  <RouteLoader>{children}</RouteLoader>
       </body>
     </html>
   );
 }
+
