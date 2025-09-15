@@ -2,19 +2,30 @@
 
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import "../app/press-start-font.css";
 
 
 const Hero: React.FC = () => {
     const textRef = useRef<HTMLDivElement>(null);
-    const [showSurvey, setShowSurvey] = useState(false);
-    const SurveySlider = dynamic(() => import('./SurveySlider'), { ssr: false });
+    const [showReadyModal, setShowReadyModal] = useState(false);
+    const router = useRouter();
 
 
 
     return (
-        <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#f7e8c3] via-[#f7cc1f]/30 to-[#281a25]/80">
+        <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+            {/* Logo in top-left corner */}
+            <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
+                <Image
+                    src="/logo.svg"
+                    alt="OriginForge Logo"
+                    width={64}
+                    height={64}
+                    className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+                    priority
+                />
+            </div>
             {/* Background SVG pattern */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <Image
@@ -72,7 +83,7 @@ const Hero: React.FC = () => {
                     ">
                     <button
                         className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition md:w-full"
-                        onClick={() => setShowSurvey(true)}
+                        onClick={() => setShowReadyModal(true)}
                     >
                         Take Survey
                     </button>
@@ -80,8 +91,25 @@ const Hero: React.FC = () => {
                         Learn More
                     </a>
                 </div>
-                {showSurvey && (
-                    <SurveySlider onClose={() => setShowSurvey(false)} />
+                {/* Ready Modal */}
+                {showReadyModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+                        <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative text-center">
+                            <button className="absolute top-2 right-2 text-gray-400 hover:text-black text-xl" onClick={() => setShowReadyModal(false)}>&times;</button>
+                            <div className="mb-4 flex justify-center">
+                                <Image src="/logo.svg" alt="OriginForge Logo" width={56} height={56} className="mx-auto" />
+                            </div>
+                            <h2 className="text-2xl font-bold mb-2 text-yellow-600">Are you ready for the survey?</h2>
+                            <p className="mb-4 text-gray-700">OriginForge is building the future of gaming identity. Your feedback will help us create a platform where you can own your achievements, build a verifiable profile, and join a new era of decentralized gaming.</p>
+                            <p className="mb-6 text-gray-600 text-sm">The survey is short, fun, and will only take a minute. Click below to get started!</p>
+                            <button
+                                className="hero-btn w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition text-lg"
+                                onClick={() => { setShowReadyModal(false); router.push('/survey'); }}
+                            >
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
                 )}
 
                 {/* Platform Icons */}

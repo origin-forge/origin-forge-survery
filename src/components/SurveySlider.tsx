@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { surveyQuestions } from "../data/surveyQuestions";
 import { saveSurveyResponse } from "../lib/supabase";

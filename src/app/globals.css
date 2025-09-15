@@ -36,6 +36,7 @@ html, body {
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
+  background: transparent !important;
 }
 /* Pixelated button style for Press Start 2P theme */
 .btn, button, .pixel-btn {
@@ -92,7 +93,7 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: transparent !important;
   color: white;
   font-family: system-ui, sans-serif;
 }
