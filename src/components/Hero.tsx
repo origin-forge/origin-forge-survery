@@ -93,14 +93,14 @@ const Hero: React.FC = () => {
                     </a>
                     {/* Platform Icons Row */}
                     <div className="flex flex-row gap-4 justify-center items-center mt-4 w-full">
-                        <span className="inline-flex items-center justify-center w-24 h-24 transition group">
-                            <Image src="/ps.svg" alt="PlayStation" width={110} height={110} className="transition group-hover:grayscale-0 grayscale" />
+                        <span className="inline-flex items-center justify-center w-32 h-32 transition group">
+                            <Image src="/steam.svg" alt="Steam" width={150} height={150} className="transition platform-icon group-hover:platform-icon-hover" />
                         </span>
-                        <span className="inline-flex items-center justify-center w-20 h-20 transition group">
-                            <Image src="/steam.svg" alt="Steam" width={80} height={80} className="transition grayscale group-hover:grayscale-0 group-hover:brightness-0 group-hover:invert" style={{ filter: 'grayscale(1) brightness(0.7)' }} />
+                        <span className="inline-flex items-center justify-center w-32 h-32 transition group">
+                            <Image src="/ps.svg" alt="PlayStation" width={150} height={150} className="transition platform-icon group-hover:platform-icon-hover" />
                         </span>
-                        <span className="inline-flex items-center justify-center w-20 h-20 transition group">
-                            <Image src="/xbox.svg" alt="Xbox" width={80} height={80} className="transition group-hover:grayscale-0 grayscale" />
+                        <span className="inline-flex items-center justify-center w-32 h-32 transition group">
+                            <Image src="/xbox.svg" alt="Xbox" width={150} height={150} className="transition platform-icon group-hover:platform-icon-hover" />
                         </span>
                     </div>
                 </div>
