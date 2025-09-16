@@ -9,9 +9,16 @@ export default function RouteLoader({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   useEffect(() => {
+    function handleLoad() {
+      setLoading(false);
+    }
     setLoading(true);
-    const handle = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(handle);
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+    return () => window.removeEventListener("load", handleLoad);
   }, [pathname]);
 
   return (
@@ -30,7 +37,7 @@ export default function RouteLoader({ children }: { children: React.ReactNode })
           <PixelLogoLoader />
         </div>
       )}
-      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s' }}>{children}</div>
+      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s' }}>{!loading && children}</div>
     </>
   );
 }

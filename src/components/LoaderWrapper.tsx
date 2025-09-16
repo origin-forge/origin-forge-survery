@@ -6,8 +6,15 @@ const PixelLogoLoader = dynamic(() => import("@/components/PixelLogoLoader"), { 
 export default function LoaderWrapper({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const handle = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(handle);
+    function handleLoad() {
+      setLoading(false);
+    }
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
   return (
     <>
@@ -25,7 +32,7 @@ export default function LoaderWrapper({ children }: { children: React.ReactNode 
           <PixelLogoLoader />
         </div>
       )}
-      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s' }}>{children}</div>
+      <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s' }}>{!loading && children}</div>
     </>
   );
 }

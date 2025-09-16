@@ -7,6 +7,7 @@ export default function SurveyPage() {
     <main className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       {/* SVG Background */}
       <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 w-full h-full bg-[#f7e8c3]" />
         <Image
           src="/bg.png"
           alt="Background pattern"

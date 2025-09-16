@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
                 />
             </div>
             {/* Background SVG pattern */}
-            <div className="absolute inset-0 w-full h-full z-0">
+            <div className="absolute inset-0 w-full h-full z-0 bg-[#eed9a3]">
                 <Image
                     src="https://origin-forge-survery.vercel.app/bg.svg"
                     alt="Background pattern"
