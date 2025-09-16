@@ -6,7 +6,7 @@ import { saveSurveyResponse } from "../lib/supabase";
 const pixelPanel =
   "border-4 border-yellow-700 bg-yellow-100 shadow-lg rounded-lg p-4 sm:p-6 pixel-border w-full max-w-lg";
 const pixelButton =
-  "hero-btn w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition px-4 sm:px-6 py-2 mt-4 text-base sm:text-lg";
+  "hero-btn w-full sm:w-auto bg-[#D0941C] text-white font-bold shadow-lg pixel-border hover:bg-[#b37b0d] transition px-4 sm:px-6 py-2 mt-4 text-base sm:text-lg";
 
 type Answers = Record<number, string | string[]>;
 

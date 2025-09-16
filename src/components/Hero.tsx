@@ -83,13 +83,17 @@ const Hero: React.FC = () => {
                     md:flex-col md:items-center md:space-y-4 md:space-x-0
                     ">
                     <button
-                        className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition md:w-full"
-                        onClick={() => setShowReadyModal(true)}
-                    >
-                        Take Survey
-                    </button>
-                    <a href="/learn" className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-white text-[#B37B0D] font-bold shadow-lg pixel-border hover:bg-yellow-50 transition md:w-full">
-                        Learn More
+                                                className="hero-btn min-w-[140px] max-w-xs sm:max-w-none !bg-[#D0941C] !text-white font-bold shadow-lg pixel-border !hover:bg-[#D0941C] transition md:w-full"
+                                                onClick={() => setShowReadyModal(true)}
+                                        >
+                                                                        <span style={{ WebkitTextStroke: '1px #000', textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000' }}>
+                                                                            Take Survey
+                                                                        </span>
+                                        </button>
+                    <a href="/learn" className="hero-btn min-w-[140px] max-w-xs sm:max-w-none bg-[#D0941C] text-white font-bold shadow-lg pixel-border hover:bg-[#b37b0d] transition md:w-full">
+                                                                        <span style={{ WebkitTextStroke: '1px #000', textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000' }}>
+                                                                            Learn More
+                                                                        </span>
                     </a>
                     {/* Platform Icons Row */}
                     <div className="flex flex-row gap-4 justify-center items-center mt-4 w-full">
@@ -116,7 +120,7 @@ const Hero: React.FC = () => {
                             <p className="mb-4 text-gray-700">OriginForge is building the future of gaming identity. Your feedback will help us create a platform where you can own your achievements, build a verifiable profile, and join a new era of decentralized gaming.</p>
                             <p className="mb-6 text-gray-600 text-sm">The survey is short, fun, and will only take a minute. Click below to get started!</p>
                             <button
-                                className="hero-btn w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-[#281A25] font-bold shadow-lg pixel-border hover:from-yellow-500 hover:to-yellow-700 transition text-lg"
+                                className="hero-btn w-full bg-[#D0941C] text-white font-bold shadow-lg pixel-border hover:bg-[#D0941C] transition text-lg"
                                 onClick={() => { setShowReadyModal(false); router.push('/survey'); }}
                             >
                                 Get Started
