@@ -1,4 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { supabase } from '../lib/supabase';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const questions = [
   {
@@ -123,6 +126,19 @@ const questions = [
 ];
 
 const SurveySection: React.FC = () => {
+  // Helper to submit answers to Supabase
+  const submitSurvey = async () => {
+    // Prepare answers for DB
+    const payload = { ...answers, submitted_at: new Date().toISOString() };
+    const { error } = await supabase.from('survey_responses').insert([payload]);
+    if (error) {
+      alert('Error submitting survey: ' + error.message);
+    } else {
+      alert('Survey submitted! Thank you.');
+      router.push('/');
+    }
+  };
+  const router = useRouter();
   const [step, setStep] = useState<number>(0);
   const [answers, setAnswers] = useState<{[key: string]: string | string[] | undefined}>({});
   const [showDiscord, setShowDiscord] = useState(false);
@@ -160,8 +176,18 @@ const SurveySection: React.FC = () => {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#f8ecd4] via-[#f7e6b2] to-[#f8ecd4] px-2 py-4 sm:px-4 sm:py-8">
+      {/* Centered clickable logo at top */}
+      <div className="flex justify-center items-center w-full mb-2">
+        <button
+          aria-label="Go to Home"
+          onClick={() => router.push('/')}
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+        >
+          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="mx-auto w-16 h-16 object-contain cursor-pointer" priority />
+        </button>
+      </div>
       <h2 className="font-press-start text-2xl sm:text-3xl text-yellow-700 text-center mb-4 sm:mb-6 drop-shadow-lg">GET NOTIFIED WHEN WE LAUNCH</h2>
-      <form className="pixel-border bg-white/90 rounded-2xl p-4 sm:p-8 w-full max-w-md flex flex-col gap-6 shadow-2xl text-xs sm:text-base border-4 border-yellow-600" onSubmit={e => e.preventDefault()}>
+  <form className="pixel-border bg-[#181820]/95 rounded-2xl p-4 sm:p-8 w-full max-w-md flex flex-col gap-6 shadow-2xl text-xs sm:text-base border-4 border-yellow-600" onSubmit={e => e.preventDefault()}>
         <div className="flex justify-center items-center mb-2">
           <span className="bg-yellow-300 font-bold px-3 py-1 rounded shadow">{step + 1} / {questions.length}</span>
         </div>
@@ -171,7 +197,7 @@ const SurveySection: React.FC = () => {
           {current.type === 'radio' && current.options && (
             <div className="flex flex-col gap-2">
               {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer">
+                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
                   <input type="radio" name={current.name} value={opt} checked={answers[current.name] === opt} onChange={handleChange} className="accent-yellow-600" /> {opt}
                 </label>
               ))}
@@ -180,7 +206,7 @@ const SurveySection: React.FC = () => {
           {current.type === 'checkbox' && current.options && (
             <div className="flex flex-col gap-2">
               {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer">
+                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
                   <input type="checkbox" name={current.name} value={opt} checked={Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt)} onChange={handleChange} className="accent-yellow-600" /> {opt}
                 </label>
               ))}
@@ -188,7 +214,7 @@ const SurveySection: React.FC = () => {
                 <div className="pl-7 pt-2">
                   <input
                     type="text"
-                    className="pixel-border border-2 border-yellow-400 rounded-xl px-4 py-3 bg-yellow-50 focus:border-yellow-600 font-press-start text-xs sm:text-sm text-yellow-700 placeholder-yellow-400 shadow w-[260px] sm:w-[320px] h-[44px] sm:h-[52px]"
+                    className="pixel-border border-2 border-yellow-400 rounded-xl px-4 py-3 bg-[#23232b] text-yellow-100 focus:border-yellow-600 font-press-start text-xs sm:text-sm placeholder-yellow-400 shadow w-[260px] sm:w-[320px] h-[44px] sm:h-[52px]"
                     placeholder="Type your answer..."
                     name={current.name + '_other'}
                     value={answers[current.name + '_other'] || ''}
@@ -200,10 +226,10 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'text' && (
-            <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-yellow-50 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
+            <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-[#23232b] text-yellow-100 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
           )}
           {current.type === 'email' && (
-            <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-yellow-50 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
+            <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-[#23232b] text-yellow-100 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
           )}
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
@@ -216,14 +242,23 @@ const SurveySection: React.FC = () => {
         {current.type !== 'discord' && (
           <div className="flex justify-between mt-4 pb-4">
             <button type="button" className="pixel-button px-4 py-2 bg-yellow-200 text-yellow-900 rounded border-2 border-yellow-400 shadow" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))}>&larr; Back</button>
-            <button
-              type="button"
-              className="pixel-button px-4 py-2 bg-yellow-500 text-white rounded border-2 border-yellow-700 shadow"
-              disabled={!isAnswered || step === questions.length-1}
-              onClick={() => {
-                setStep(s => Math.min(questions.length-1, s+1));
-              }}
-            >Next &rarr;</button>
+            {step === questions.length - 2 ? (
+              <button
+                type="button"
+                className="pixel-button px-4 py-2 bg-green-600 text-white rounded border-2 border-green-700 shadow"
+                disabled={!isAnswered}
+                onClick={submitSurvey}
+              >Submit</button>
+            ) : (
+              <button
+                type="button"
+                className="pixel-button px-4 py-2 bg-yellow-500 text-white rounded border-2 border-yellow-700 shadow"
+                disabled={!isAnswered || step === questions.length-1}
+                onClick={() => {
+                  setStep(s => Math.min(questions.length-1, s+1));
+                }}
+              >Next &rarr;</button>
+            )}
           </div>
         )}
       </form>

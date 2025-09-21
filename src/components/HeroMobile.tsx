@@ -61,15 +61,17 @@ const HeroMobile: React.FC = () => {
               }}
             >
               <span
-                className="break-words text-black text-[7vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw] xl:text-[2.8vw] font-bold text-center tracking-[0.04em] leading-[1.1]"
+                className="break-words text-white text-[7vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw] xl:text-[2.8vw] font-bold text-center tracking-[0.04em] leading-[1.1]"
                 style={{
                   marginRight: '0',
-                  WebkitTextStroke: '2px #000',
-                  textShadow: '0 0 2px #000, 0 2px 2px #000, 2px 0 2px #000, -2px 0 2px #000, 2px 2px 2px #000, -2px -2px 2px #000',
+                  marginBottom: '4px',
+                  WebkitTextStroke: '1px #000',
+                  textShadow: '0 1px 2px #000',
                   wordBreak: 'break-word',
                   overflowWrap: 'break-word',
                   width: '100%',
-                  color: '#000'
+                  color: '#fff',
+                  WebkitTextFillColor: '#fff'
                 }}
               >
                 FORGE YOUR ULTIMATE
@@ -77,8 +79,8 @@ const HeroMobile: React.FC = () => {
               <span
                 className="whitespace-nowrap text-[6vw] sm:text-[4vw] md:text-[3vw] lg:text-[2.2vw] xl:text-[2vw] font-bold text-center tracking-[0.13em] leading-[1.1]"
                 style={{
-                  WebkitTextStroke: '2px #000',
-                  textShadow: '0 0 2px #000, 0 2px 2px #000, 2px 0 2px #000, -2px 0 2px #000, 2px 2px 2px #000, -2px -2px 2px #000',
+                  WebkitTextStroke: '1px #000',
+                  textShadow: '0 1px 2px #000',
                   maxWidth: '100vw',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -102,7 +104,7 @@ const HeroMobile: React.FC = () => {
                 fontSize: '18px',
                 lineHeight: '125%',
                 textTransform: 'uppercase',
-                color: '#000 !important',
+                color: '#000',
                 WebkitTextFillColor: '#000',
                 flex: 'none',
                 order: 1,
@@ -129,6 +131,7 @@ const HeroMobile: React.FC = () => {
                 marginRight: '0',
                 marginBottom: '4px',
                 lineHeight: 0
+                // No boxShadow or shadow styles
               }}
             >
               <button
