@@ -1,3 +1,4 @@
+@import './pixel-corners.css';
 /* Figma/Frame style for hero buttons */
 .hero-btn {
   display: flex;

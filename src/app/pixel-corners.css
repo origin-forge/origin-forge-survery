@@ -1,0 +1,30 @@
+/* Pixelated corners for survey form */
+.pixel-corners {
+  border-radius: 0;
+  position: relative;
+  box-shadow:
+    0 0 0 4px #000,
+    0 0 0 8px #fff,
+    0 0 0 12px #000;
+}
+
+/* Add pixel blocks to corners using pseudo-elements */
+.pixel-corners::before, .pixel-corners::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 4px solid #000;
+  z-index: 2;
+}
+.pixel-corners::before {
+  top: -8px;
+  left: -8px;
+  border-radius: 0;
+}
+.pixel-corners::after {
+  bottom: -8px;
+  right: -8px;
+  border-radius: 0;
+}

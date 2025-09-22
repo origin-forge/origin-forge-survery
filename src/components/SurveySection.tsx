@@ -175,29 +175,37 @@ const SurveySection: React.FC = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#f8ecd4] via-[#f7e6b2] to-[#f8ecd4] px-2 py-4 sm:px-4 sm:py-8">
-      {/* Centered clickable logo at top */}
-      <div className="flex justify-center items-center w-full mb-2">
-        <button
-          aria-label="Go to Home"
-          onClick={() => router.push('/')}
-          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-        >
-          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="mx-auto w-16 h-16 object-contain cursor-pointer" priority />
-        </button>
-      </div>
-      <h2 className="font-press-start text-2xl sm:text-3xl text-yellow-700 text-center mb-4 sm:mb-6 drop-shadow-lg">GET NOTIFIED WHEN WE LAUNCH</h2>
-  <form className="pixel-border bg-[#181820]/95 rounded-2xl p-4 sm:p-8 w-full max-w-md flex flex-col gap-6 shadow-2xl text-xs sm:text-base border-4 border-yellow-600" onSubmit={e => e.preventDefault()}>
-        <div className="flex justify-center items-center mb-2">
-          <span className="bg-yellow-300 font-bold px-3 py-1 rounded shadow">{step + 1} / {questions.length}</span>
-        </div>
+  <section className="flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+    {/* Centered clickable logo at top */}
+    <div className="flex justify-center items-center w-full mb-2">
+      <button
+        aria-label="Go to Home"
+        onClick={() => router.push('/')}
+        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+      >
+        <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="mx-auto w-16 h-16 object-contain cursor-pointer" priority />
+      </button>
+    </div>
+    <div className="w-full max-w-md mx-auto">
+      <form
+        className="pixel-border pixel-corners p-0 w-full flex flex-col gap-6 text-xs sm:text-base border-4 border-yellow-600"
+        style={{
+          backgroundImage: 'url(/form-bg.svg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          borderRadius: '1rem',
+        }}
+        onSubmit={e => e.preventDefault()}
+      >
+          <span className="bg-yellow-300 font-bold px-3 py-1 rounded shadow text-blue-900">{step + 1} / {questions.length}</span>
         {/* Single Question Card */}
         <div className="flex flex-col gap-3">
           <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
           {current.type === 'radio' && current.options && (
             <div className="flex flex-col gap-2">
               {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
                   <input type="radio" name={current.name} value={opt} checked={answers[current.name] === opt} onChange={handleChange} className="accent-yellow-600" /> {opt}
                 </label>
               ))}
@@ -206,7 +214,7 @@ const SurveySection: React.FC = () => {
           {current.type === 'checkbox' && current.options && (
             <div className="flex flex-col gap-2">
               {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-50 border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
                   <input type="checkbox" name={current.name} value={opt} checked={Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt)} onChange={handleChange} className="accent-yellow-600" /> {opt}
                 </label>
               ))}
@@ -226,10 +234,10 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'text' && (
-            <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-[#23232b] text-yellow-100 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
+            <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-white text-yellow-900 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
           )}
           {current.type === 'email' && (
-            <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-[#23232b] text-yellow-100 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
+            <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-white text-yellow-900 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
           )}
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
@@ -262,7 +270,8 @@ const SurveySection: React.FC = () => {
           </div>
         )}
       </form>
-    </section>
+    </div>
+  </section>
   );
 };
 

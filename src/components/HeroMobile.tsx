@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import SurveySection from './SurveySection';
+import SurveyCardWrapper from './SurveyCardWrapper';
 import Image from 'next/image';
 
 const HeroMobile: React.FC = () => {
@@ -8,7 +8,7 @@ const HeroMobile: React.FC = () => {
   const [showSurvey, setShowSurvey] = useState(false);
 
   if (showSurvey) {
-    return <SurveySection />;
+    return <SurveyCardWrapper />;
   }
 
   return (
