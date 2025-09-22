@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import HeroMobile from './HeroMobile';
-import HeroDesktop from './HeroDesktop';
 import "../app/press-start-font.css";
+import HeroDesktop from './HeroDesktop';
 
 
 const Hero: React.FC = () => {

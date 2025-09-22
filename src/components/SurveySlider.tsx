@@ -3,10 +3,20 @@ import React, { useState, useEffect } from "react";
 import { surveyQuestions } from "../data/surveyQuestions";
 import { saveSurveyResponse } from "../lib/supabase";
 
-const pixelPanel = "bg-white rounded-2xl shadow-lg p-6 w-full max-w-2xl";
-const optionButton = "w-full text-left p-4 mb-3 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-colors duration-200 text-gray-800 font-medium";
-const selectedOption = "border-blue-500 bg-blue-50";
-const nextButton = "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 mt-6";
+// Pixel art styling
+const pixelPanel = "bg-[#FFE5B4] border-4 border-black p-6 w-full max-w-2xl";
+const optionButton = "w-full text-left p-4 mb-3 border-4 border-black bg-white hover:bg-[#FFD700] transition-colors duration-200 text-black font-mono text-sm sm:text-base flex items-center";
+const selectedOption = "bg-[#FFD700] border-4 border-black font-bold";
+const nextButton = "w-full bg-black hover:bg-gray-800 text-white font-mono py-3 px-6 border-4 border-black mt-6 text-sm sm:text-base";
+
+// Pixel art radio button
+const PixelRadio = ({ selected }: { selected: boolean }) => (
+  <div className={`w-5 h-5 border-2 border-black mr-3 flex-shrink-0 ${selected ? 'bg-black' : 'bg-white'}`}>
+    {selected && (
+      <div className="w-3 h-3 m-0.5 bg-white border border-black" />
+    )}
+  </div>
+);
 
 type Answers = Record<number, string | string[]>;
 
@@ -87,17 +97,34 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-0">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-[#8B4513]/80" />
       <div className={`${pixelPanel} relative z-10 w-full max-w-xs sm:max-w-lg mx-auto text-center animate-fade-in`}>
+        <style jsx global>{`
+          @font-face {
+            font-family: 'PressStart2P';
+            src: url('/PressStart2P-Regular.ttf') format('truetype');
+          }
+          .pixel-font {
+            font-family: 'PressStart2P', monospace;
+            font-size: 0.7rem;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+          }
+          @media (min-width: 640px) {
+            .pixel-font {
+              font-size: 0.8rem;
+            }
+          }
+        `}</style>
         <div className="mb-6">
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-            <div 
-              className="bg-blue-600 h-2.5 rounded-full transition-all duration-300 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <div className="text-xs sm:text-sm text-yellow-700 font-sans" style={{fontFamily: 'Poppins, Montserrat, Arial, sans-serif'}}>
-            Question {step + 1} of {surveyQuestions.length}
+            <div className="w-full bg-gray-200 h-3 border-2 border-black mb-2">
+              <div 
+                className="bg-[#FF6B6B] h-full transition-all duration-300 ease-out"
+                style={{ width: `${progress}%`, boxShadow: 'inset 0 0 0 2px #000' }}
+              />
+            </div>
+          <div className="text-xs sm:text-sm text-black pixel-font">
+            {step + 1} / {surveyQuestions.length}
           </div>
         </div>
         
@@ -116,7 +143,7 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
               name="email"
               required
               autoFocus
-              className="block w-full max-w-xs mx-auto rounded border-2 border-gray-300 bg-white text-black text-base px-4 py-3 outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+              className="block w-full max-w-xs mx-auto border-4 border-black bg-white text-black text-sm sm:text-base px-4 py-3 outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 pixel-font"
               placeholder="Enter your email"
             />
           </form>
@@ -130,8 +157,9 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
                 }`}
                 onClick={() => handleOption(currentQuestion.id, option.value)}
               >
+                <PixelRadio selected={answers[currentQuestion.id] === option.value} />
                 {option.emoji && <span className="mr-2">{option.emoji}</span>}
-                {option.label}
+                <span className="pixel-font">{option.label}</span>
               </button>
             ))}
           </div>
