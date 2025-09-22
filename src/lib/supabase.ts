@@ -9,30 +9,50 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export interface SurveyResponse {
   id?: string
   created_at?: string
-  question_1?: string // Platform preference
-  question_2?: string // Gaming hours per week
-  question_3?: string[] // Game genres (multiple choice)
-  question_4?: string // Competitive spirit rating
-  question_5?: string // Gaming motivation
-  question_6?: string // Future of gaming thoughts
-  question_7?: string // Email address
+  platforms?: string[]
+  frequency?: string
+  achievements?: string
+  frustrated?: string
+  showoff?: string
+  interest?: string
+  price?: string
+  features?: string[]
+  age?: string
+  location?: string
+  spend?: string
+  frustration?: string
+  excited?: string
+  thoughts?: string
+  notify?: string
+  email?: string
+  discord?: string
   total_score?: number
   user_agent?: string
   ip_address?: string
 }
 
 // Helper function to save survey response
-export async function saveSurveyResponse(answers: Record<number, string | string[]>, score: number) {
+export async function saveSurveyResponse(answers: Record<string, string | string[]>, score: number) {
   try {
     // Transform answers into our database format
     const surveyData: SurveyResponse = {
-      question_1: answers[1] as string,
-      question_2: answers[2] as string,
-      question_3: Array.isArray(answers[3]) ? answers[3] : [answers[3] as string],
-      question_4: answers[4] as string,
-      question_5: answers[5] as string,
-      question_6: answers[6] as string,
-      question_7: answers[7] as string,
+      platforms: Array.isArray(answers['platforms']) ? answers['platforms'] : [answers['platforms'] as string],
+      frequency: answers['frequency'] as string,
+      achievements: answers['achievements'] as string,
+      frustrated: answers['frustrated'] as string,
+      showoff: answers['showoff'] as string,
+      interest: answers['interest'] as string,
+      price: answers['price'] as string,
+      features: Array.isArray(answers['features']) ? answers['features'] : [answers['features'] as string],
+      age: answers['age'] as string,
+      location: answers['location'] as string,
+      spend: answers['spend'] as string,
+      frustration: answers['frustration'] as string,
+      excited: answers['excited'] as string,
+      thoughts: answers['thoughts'] as string,
+      notify: answers['notify'] as string,
+      email: answers['email'] as string,
+      discord: answers['discord'] as string,
       total_score: score,
       user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : '',
     }
@@ -47,7 +67,6 @@ export async function saveSurveyResponse(answers: Record<number, string | string
       throw error
     }
 
-    console.log('Survey response saved successfully:', data)
     return data
   } catch (error) {
     console.error('Failed to save survey response:', error)

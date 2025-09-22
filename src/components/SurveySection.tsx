@@ -127,6 +127,7 @@ const questions = [
 
 const SurveySection: React.FC = () => {
   // Helper to submit answers to Supabase
+  const [showShareCard, setShowShareCard] = useState(false);
   const submitSurvey = async () => {
     // Prepare answers for DB
     const payload = { ...answers, submitted_at: new Date().toISOString() };
@@ -134,14 +135,13 @@ const SurveySection: React.FC = () => {
     if (error) {
       alert('Error submitting survey: ' + error.message);
     } else {
-      alert('Survey submitted! Thank you.');
-      router.push('/');
+      setShowShareCard(true);
     }
   };
   const router = useRouter();
   const [step, setStep] = useState<number>(0);
   const [answers, setAnswers] = useState<{[key: string]: string | string[] | undefined}>({});
-  const [showDiscord, setShowDiscord] = useState(false);
+  // Removed unused showDiscord state
   // Discord popup state removed
 
   const current = questions[step];
@@ -175,22 +175,22 @@ const SurveySection: React.FC = () => {
   };
 
   return (
-  <section className="flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-    {/* Centered clickable logo at top */}
-    <div className="flex justify-center items-center w-full mb-2">
+  <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+    {/* Logo in top-left corner */}
+    <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
       <button
         aria-label="Go to Home"
         onClick={() => router.push('/')}
-        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+        style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, cursor: 'pointer' }}
       >
-        <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="mx-auto w-16 h-16 object-contain cursor-pointer" priority />
+        <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
       </button>
     </div>
     <div className="w-full max-w-md mx-auto">
       <form
         className="pixel-border pixel-corners p-0 w-full flex flex-col gap-6 text-xs sm:text-base border-4 border-yellow-600"
         style={{
-          backgroundImage: 'url(/form-bg.svg)',
+          backgroundImage: 'url(/form.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -198,10 +198,39 @@ const SurveySection: React.FC = () => {
         }}
         onSubmit={e => e.preventDefault()}
       >
-          <span className="bg-yellow-300 font-bold px-3 py-1 rounded shadow text-blue-900">{step + 1} / {questions.length}</span>
+          <div className="w-full flex justify-center items-center">
+            <span
+              className="bg-yellow-300 font-bold rounded shadow"
+              style={{
+                color: '#6b4f2c', // brown
+                padding: '4px 16px',
+                fontSize: '1.1rem',
+                minWidth: '64px',
+                textAlign: 'center',
+                display: 'inline-block',
+                marginTop: '16px',
+              }}
+            >
+              {step + 1} / {questions.length}
+            </span>
+          </div>
         {/* Single Question Card */}
         <div className="flex flex-col gap-3">
-          <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
+          {/* Only show label if not email or not on share card */}
+          {current.type !== 'email' && (
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
+          )}
+          {current.type === 'email' && !showShareCard && (
+            <>
+              <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
+              <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-white text-yellow-900 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
+            </>
+          )}
+          {current.type === 'email' && showShareCard && (
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow text-center">
+              No emails here, just good vibes and epic loot!
+            </div>
+          )}
           {current.type === 'radio' && current.options && (
             <div className="flex flex-col gap-2">
               {current.options.map(opt => (
@@ -236,9 +265,6 @@ const SurveySection: React.FC = () => {
           {current.type === 'text' && (
             <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-white text-yellow-900 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
           )}
-          {current.type === 'email' && (
-            <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-white text-yellow-900 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
-          )}
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
               <div className="mb-6 text-center font-press-start text-yellow-700 text-base sm:text-lg">Ready to level up your social XP? Our Discord is where the real loot drops!</div>
@@ -248,26 +274,44 @@ const SurveySection: React.FC = () => {
         </div>
         {/* Navigation Arrows */}
         {current.type !== 'discord' && (
-          <div className="flex justify-between mt-4 pb-4">
-            <button type="button" className="pixel-button px-4 py-2 bg-yellow-200 text-yellow-900 rounded border-2 border-yellow-400 shadow" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))}>&larr; Back</button>
-            {step === questions.length - 2 ? (
+          showShareCard ? (
+            <div className="flex flex-col gap-4 items-center justify-center mt-8 mb-8">
               <button
                 type="button"
-                className="pixel-button px-4 py-2 bg-green-600 text-white rounded border-2 border-green-700 shadow"
-                disabled={!isAnswered}
-                onClick={submitSurvey}
-              >Submit</button>
-            ) : (
-              <button
-                type="button"
-                className="pixel-button px-4 py-2 bg-yellow-500 text-white rounded border-2 border-yellow-700 shadow"
-                disabled={!isAnswered || step === questions.length-1}
+                className="pixel-button px-6 py-4 bg-blue-600 text-white rounded border-2 border-blue-700 shadow w-full max-w-xs font-bold text-lg"
                 onClick={() => {
-                  setStep(s => Math.min(questions.length-1, s+1));
+                  const tweetText = encodeURIComponent('I just completed the OriginForge survey! Check it out and help shape the future of gaming achievements. #OriginForge #Survey https://originforge.games');
+                  window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
                 }}
-              >Next &rarr;</button>
-            )}
-          </div>
+              >Share it on X!</button>
+              <button
+                type="button"
+                className="pixel-button px-6 py-4 bg-purple-600 text-white rounded border-2 border-purple-700 shadow w-full max-w-xs font-bold text-lg"
+                onClick={() => window.open('https://discord.gg/your-discord-link', '_blank')}
+              >Join Discord</button>
+            </div>
+          ) : (
+            <div className="flex justify-between mt-4 pb-4">
+              <button type="button" className="pixel-button px-4 py-2 bg-yellow-200 text-yellow-900 rounded border-2 border-yellow-400 shadow" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))}>&larr; Back</button>
+              {step === questions.length - 2 ? (
+                <button
+                  type="button"
+                  className="pixel-button px-4 py-2 bg-green-600 text-white rounded border-2 border-green-700 shadow"
+                  disabled={!isAnswered}
+                  onClick={submitSurvey}
+                >Submit</button>
+              ) : (
+                <button
+                  type="button"
+                  className="pixel-button px-4 py-2 bg-yellow-500 text-white rounded border-2 border-yellow-700 shadow"
+                  disabled={!isAnswered || step === questions.length-1}
+                  onClick={() => {
+                    setStep(s => Math.min(questions.length-1, s+1));
+                  }}
+                >Next &rarr;</button>
+              )}
+            </div>
+          )
         )}
       </form>
     </div>

@@ -130,17 +130,20 @@ const HeroMobile: React.FC = () => {
                 height: '40px',
                 marginRight: '0',
                 marginBottom: '4px',
-                lineHeight: 0
-                // No boxShadow or shadow styles
+                lineHeight: 0,
+                background: 'none',
+                border: 'none',
+                boxShadow: 'none',
+                borderRadius: 0
               }}
             >
               <button
-                style={{ width: '100%', height: '100%', background: 'transparent', border: 'none', padding: 0 }}
+                style={{ width: '100%', height: '100%', background: 'transparent', border: 'none', boxShadow: 'none', borderRadius: 0, padding: 0 }}
                 onClick={() => setShowSurvey(true)}
               >
                 <Image 
-                  src="/get-started.svg" 
-                  alt="Get Started" 
+                  src="/signup.png" 
+                  alt="Sign Up" 
                   width={180} 
                   height={40}
                   className="pointer-events-none w-full h-auto"
