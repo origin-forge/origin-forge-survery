@@ -1,3 +1,127 @@
+// Custom Radio SVGs
+const RadioOff = () => (
+  <svg width="32" height="28" viewBox="0 0 54 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" width="45" height="48" rx="22.5" fill="white"/>
+    <rect x="12" y="40" width="30" height="4" fill="white"/>
+    <rect x="8" y="36" width="4" height="4" fill="white"/>
+    <rect width="30" height="4" transform="matrix(1 0 0 -1 12 8)" fill="white"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 8 12)" fill="white"/>
+    <rect x="4" y="12" width="10" height="24" fill="white"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="#B37B0D"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 36)" fill="white"/>
+    <rect x="46" y="8" width="4" height="4" transform="rotate(180 46 8)" fill="#E5C179"/>
+    <rect x="48" y="12" width="6" height="4" transform="rotate(180 48 12)" fill="white"/>
+    <rect width="10" height="24" transform="matrix(-1 0 0 1 52 12)" fill="white"/>
+    <rect x="12" width="30" height="4" fill="black"/>
+    <rect x="12" y="44" width="30" height="4" fill="black"/>
+    <rect x="8" y="40" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="black"/>
+    <rect x="8" y="4" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 4)" fill="black"/>
+    <rect x="4" y="36" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 36)" fill="black"/>
+    <rect x="4" y="8" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 8)" fill="black"/>
+    <rect y="12" width="4" height="24" fill="black"/>
+    <rect width="4" height="24" transform="matrix(-1 0 0 1 54 12)" fill="black"/>
+  </svg>
+);
+
+const RadioOn = () => (
+  <svg width="32" height="28" viewBox="0 0 54 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" width="45" height="48" rx="22.5" fill="#D0941C"/>
+    <rect x="12" y="40" width="30" height="4" fill="#B37B0D"/>
+    <rect x="8" y="36" width="4" height="4" fill="#B37B0D"/>
+    <rect width="30" height="4" transform="matrix(1 0 0 -1 12 8)" fill="#E5C179"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 8 12)" fill="#E5C179"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 42 12)" fill="#E5C179"/>
+    <rect x="4" y="12" width="10" height="24" fill="#D0941C"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="#B37B0D"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 36)" fill="#B37B0D"/>
+    <rect x="46" y="8" width="4" height="4" transform="rotate(180 46 8)" fill="#E5C179"/>
+    <rect width="10" height="24" transform="matrix(-1 0 0 1 52 12)" fill="#D0941C"/>
+    <rect x="12" width="30" height="4" fill="black"/>
+    <rect x="12" y="44" width="30" height="4" fill="black"/>
+    <rect x="8" y="40" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="black"/>
+    <rect x="8" y="4" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 4)" fill="black"/>
+    <rect x="4" y="36" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 36)" fill="black"/>
+    <rect x="4" y="8" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 8)" fill="black"/>
+    <rect y="12" width="4" height="24" fill="black"/>
+    <rect width="4" height="24" transform="matrix(-1 0 0 1 54 12)" fill="black"/>
+    <path d="M36.9998 14H40.3332V17.3333H36.9998V14ZM33.6665 20.6667V17.3333H36.9998V20.6667H33.6665ZM30.3332 24V20.6667H33.6665V24H30.3332ZM26.9998 27.3333H30.3332V24H26.9998V27.3333ZM23.6665 30.6667H26.9998V27.3333H23.6665V30.6667ZM20.3332 30.6667V34H23.6665V30.6667H20.3332ZM16.9998 27.3333H20.3332V30.6667H16.9998V27.3333ZM16.9998 27.3333H13.6665V24H16.9998V27.3333Z" fill="black"/>
+  </svg>
+);
+// Custom Checkbox SVGs
+const CheckboxOff = () => (
+  <svg width="32" height="28" viewBox="0 0 54 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" width="45" height="48" rx="22.5" fill="white"/>
+    <rect x="12" y="40" width="30" height="4" fill="white"/>
+    <rect x="8" y="36" width="4" height="4" fill="white"/>
+    <rect width="30" height="4" transform="matrix(1 0 0 -1 12 8)" fill="white"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 8 12)" fill="white"/>
+    <rect x="4" y="12" width="10" height="24" fill="white"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="#B37B0D"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 36)" fill="white"/>
+    <rect x="46" y="8" width="4" height="4" transform="rotate(180 46 8)" fill="#E5C179"/>
+    <rect x="48" y="12" width="6" height="4" transform="rotate(180 48 12)" fill="white"/>
+    <rect width="10" height="24" transform="matrix(-1 0 0 1 52 12)" fill="white"/>
+    <rect x="12" width="30" height="4" fill="black"/>
+    <rect x="12" y="44" width="30" height="4" fill="black"/>
+    <rect x="8" y="40" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="black"/>
+    <rect x="8" y="4" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 4)" fill="black"/>
+    <rect x="4" y="36" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 36)" fill="black"/>
+    <rect x="4" y="8" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 8)" fill="black"/>
+    <rect y="12" width="4" height="24" fill="black"/>
+    <rect width="4" height="24" transform="matrix(-1 0 0 1 54 12)" fill="black"/>
+  </svg>
+);
+
+const CheckboxOn = () => (
+  <svg width="32" height="28" viewBox="0 0 54 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" width="45" height="48" rx="22.5" fill="#D0941C"/>
+    <rect x="12" y="40" width="30" height="4" fill="#B37B0D"/>
+    <rect x="8" y="36" width="4" height="4" fill="#B37B0D"/>
+    <rect width="30" height="4" transform="matrix(1 0 0 -1 12 8)" fill="#E5C179"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 8 12)" fill="#E5C179"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 42 12)" fill="#E5C179"/>
+    <rect x="4" y="12" width="10" height="24" fill="#D0941C"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="#B37B0D"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 36)" fill="#B37B0D"/>
+    <rect x="46" y="8" width="4" height="4" transform="rotate(180 46 8)" fill="#E5C179"/>
+    <rect width="10" height="24" transform="matrix(-1 0 0 1 52 12)" fill="#D0941C"/>
+    <rect x="12" width="30" height="4" fill="black"/>
+    <rect x="12" y="44" width="30" height="4" fill="black"/>
+    <rect x="8" y="40" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 40)" fill="black"/>
+    <rect x="8" y="4" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 46 4)" fill="black"/>
+    <rect x="4" y="36" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 36)" fill="black"/>
+    <rect x="4" y="8" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 50 8)" fill="black"/>
+    <rect y="12" width="4" height="24" fill="black"/>
+    <rect width="4" height="24" transform="matrix(-1 0 0 1 54 12)" fill="black"/>
+    <rect x="21" y="12" width="12" height="4" fill="black"/>
+    <rect x="17" y="16" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 37 16)" fill="black"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 17 32)" fill="black"/>
+    <rect x="37" y="32" width="4" height="4" transform="rotate(180 37 32)" fill="black"/>
+    <rect x="13" y="20" width="4" height="4" fill="black"/>
+    <rect width="4" height="4" transform="matrix(-1 0 0 1 41 20)" fill="black"/>
+    <rect width="4" height="4" transform="matrix(1 0 0 -1 13 28)" fill="black"/>
+    <rect x="41" y="28" width="4" height="4" transform="rotate(180 41 28)" fill="black"/>
+    <rect x="21" y="32" width="12" height="4" fill="black"/>
+    <path d="M21 20V16H33V20H37V28H33V32H21V28H17V20H21Z" fill="white"/>
+  </svg>
+);
 import React, { useState, useMemo } from 'react';
 import { supabase } from '../lib/supabase';
 import Image from 'next/image';
@@ -186,9 +310,9 @@ const SurveySection: React.FC = () => {
         <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
       </button>
     </div>
-    <div className="w-full max-w-md mx-auto">
+  <div className="w-full max-w-md mx-auto relative z-30" style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25)' }}>
       <form
-        className="pixel-border pixel-corners p-0 w-full flex flex-col gap-6 text-xs sm:text-base border-4 border-yellow-600"
+        className="p-0 w-full flex flex-col gap-6 text-xs sm:text-base"
         style={{
           backgroundImage: 'url(/form.png)',
           backgroundSize: 'cover',
@@ -218,7 +342,7 @@ const SurveySection: React.FC = () => {
         <div className="flex flex-col gap-3">
           {/* Only show label if not email or not on share card */}
           {current.type !== 'email' && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
             <>
@@ -233,20 +357,44 @@ const SurveySection: React.FC = () => {
           )}
           {current.type === 'radio' && current.options && (
             <div className="flex flex-col gap-2">
-              {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
-                  <input type="radio" name={current.name} value={opt} checked={answers[current.name] === opt} onChange={handleChange} className="accent-yellow-600" /> {opt}
-                </label>
-              ))}
+              {current.options.map(opt => {
+                const checked = answers[current.name] === opt;
+                return (
+                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                    <input
+                      type="radio"
+                      name={current.name}
+                      value={opt}
+                      checked={checked}
+                      onChange={handleChange}
+                      style={{ display: 'none' }}
+                    />
+                    {checked ? <RadioOn /> : <RadioOff />}
+                    {opt}
+                  </label>
+                );
+              })}
             </div>
           )}
           {current.type === 'checkbox' && current.options && (
             <div className="flex flex-col gap-2">
-              {current.options.map(opt => (
-                <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
-                  <input type="checkbox" name={current.name} value={opt} checked={Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt)} onChange={handleChange} className="accent-yellow-600" /> {opt}
-                </label>
-              ))}
+              {current.options.map(opt => {
+                const checked = Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt);
+                return (
+                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                    <input
+                      type="checkbox"
+                      name={current.name}
+                      value={opt}
+                      checked={checked}
+                      onChange={handleChange}
+                      style={{ display: 'none' }}
+                    />
+                    {checked ? <CheckboxOn /> : <CheckboxOff />}
+                    {opt}
+                  </label>
+                );
+              })}
               {current.other && Array.isArray(answers[current.name]) && answers[current.name]?.includes('Other') && (
                 <div className="pl-7 pt-2">
                   <input
@@ -292,23 +440,29 @@ const SurveySection: React.FC = () => {
             </div>
           ) : (
             <div className="flex justify-between mt-4 pb-4">
-              <button type="button" className="pixel-button px-4 py-2 bg-yellow-200 text-yellow-900 rounded border-2 border-yellow-400 shadow" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))}>&larr; Back</button>
+              <button type="button" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))} style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Image src="/previous.png" alt="Previous" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+              </button>
               {step === questions.length - 2 ? (
                 <button
                   type="button"
-                  className="pixel-button px-4 py-2 bg-green-600 text-white rounded border-2 border-green-700 shadow"
                   disabled={!isAnswered}
                   onClick={submitSurvey}
-                >Submit</button>
+                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                >
+                  <Image src="/submit.png" alt="Submit" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+                </button>
               ) : (
                 <button
                   type="button"
-                  className="pixel-button px-4 py-2 bg-yellow-500 text-white rounded border-2 border-yellow-700 shadow"
                   disabled={!isAnswered || step === questions.length-1}
                   onClick={() => {
                     setStep(s => Math.min(questions.length-1, s+1));
                   }}
-                >Next &rarr;</button>
+                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                >
+                  <Image src="/next.png" alt="Next" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+                </button>
               )}
             </div>
           )
