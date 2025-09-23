@@ -11,7 +11,7 @@ const HeroDesktop: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       {/* Logo in top-left corner */}
       <div className="absolute top-0 left-0 z-20 p-4">
         <Image

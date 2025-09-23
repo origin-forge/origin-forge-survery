@@ -12,7 +12,7 @@ const HeroMobile: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden md:overflow-x-hidden">
+    <section id="hero" className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden md:overflow-x-hidden">
       {/* Logo in top-left corner */}
       <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
         <Image

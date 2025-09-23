@@ -125,6 +125,7 @@ const CheckboxOn = () => (
 import React, { useState, useMemo } from 'react';
 import { supabase } from '../lib/supabase';
 import Image from 'next/image';
+import Link from "next/link";
 import { useRouter } from 'next/navigation';
 
 const questions = [
@@ -302,13 +303,13 @@ const SurveySection: React.FC = () => {
   <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
     {/* Logo in top-left corner */}
     <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
-      <button
-        aria-label="Go to Home"
-        onClick={() => router.push('/')}
-        style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, cursor: 'pointer' }}
-      >
-        <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
-      </button>
+       <button
+         aria-label="Go to Hero Section"
+         onClick={() => router.push('/#hero')}
+         style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, cursor: 'pointer' }}
+       >
+         <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
+       </button>
     </div>
   <div className="w-full max-w-md mx-auto relative z-30" style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25)' }}>
       <form
