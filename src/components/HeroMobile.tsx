@@ -121,79 +121,21 @@ const HeroMobile: React.FC = () => {
           </div>
         </div>
 
-  {/* CTA Buttons */}
-  <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-start items-center sm:items-start mt-4 mb-4 sm:mb-6 w-full max-w-2xl">
-          <div className="w-full sm:w-auto flex justify-center sm:block">
-            <div 
-              className="inline-block"
-              style={{
-                width: '90vw',
-                maxWidth: '180px',
-                height: '40px',
-                marginRight: '0',
-                marginBottom: '4px',
-                lineHeight: 0,
-                background: 'none',
-                border: 'none',
-                boxShadow: 'none',
-                borderRadius: 0
-              }}
-            >
-              <button
-                style={{ width: '100%', height: '100%', background: 'transparent', border: 'none', boxShadow: 'none', borderRadius: 0, padding: 0 }}
-                onClick={() => router.push('/survey')}
-              >
-                <Image 
-                  src="/signup.png" 
-                  alt="Sign Up" 
-                  width={180} 
-                  height={40}
-                  className="pointer-events-none w-full h-auto"
-                  priority
-                />
-              </button>
-            </div>
-          </div>
-          <div className="w-full sm:w-auto flex justify-center sm:block">
-            <a 
-              href="/learn" 
-              className="inline-block hover:opacity-90"
-              style={{
-                width: '98vw',
-                maxWidth: '320px',
-                height: '70px',
-                marginLeft: '0',
-                marginBottom: '32px',
-                lineHeight: 0,
-                background: 'transparent',
-                // transform removed
-              }}
-            >
-              <Image 
-                src="/how-it-works.svg" 
-                alt="How It Works" 
-                width={240} 
-                height={54}
-                className="pointer-events-none w-full h-auto"
-                style={undefined}
-                priority
-              />
-            </a>
-          </div>
-          {/* Platform Icons Row */}
-          <div className="w-full flex justify-center mt-8">
-            <div className="flex flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center w-full max-w-md">
-              <span className="inline-flex items-center justify-center w-20 h-20 sm:w-32 sm:h-32 transition group">
-                <Image src="/steam.svg" alt="Steam" width={150} height={150} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-              </span>
-              <span className="inline-flex items-center justify-center w-20 h-20 sm:w-32 sm:h-32 transition group">
-                <Image src="/ps.svg" alt="PlayStation" width={150} height={150} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-              </span>
-              <span className="inline-flex items-center justify-center w-20 h-20 sm:w-32 sm:h-32 transition group">
-                <Image src="/xbox.svg" alt="Xbox" width={150} height={150} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-              </span>
-            </div>
-          </div>
+        {/* Take Survey Button Centered */}
+        <div className="flex flex-col items-center justify-center w-full mt-0 mb-24">
+          <button
+            style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+            onClick={() => router.push('/survey')}
+          >
+            <Image 
+              src="/take-survey.png" 
+              alt="Take Survey" 
+              width={440} 
+              height={160}
+              className="w-full max-w-xl h-auto mx-auto"
+              priority
+            />
+          </button>
         </div>
         {/* Coming Soon SVG at the bottom */}
         <div className="w-full flex justify-center items-end mt-auto pb-2">

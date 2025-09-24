@@ -78,28 +78,21 @@ const HeroDesktop: React.FC = () => {
                 Craft decentralized identities, own achievements, build a verifiable profile.
               </div>
               
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 w-full">
-                <div className="relative w-[220px] h-[70px]">
+              {/* Take Survey Button Centered */}
+              <div className="flex flex-col items-center justify-center w-full mt-8 mb-8">
+                <button
+                  style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+                  onClick={() => router.push('/survey')}
+                >
                   <Image 
-                    src="/signup.png" 
-                    alt="Sign Up" 
-                    fill
-                    className="cursor-pointer hover:opacity-90 object-contain"
-                    priority
-                    onClick={() => router.push('/survey')}
-                  />
-                </div>
-                
-                <div className="relative w-[320px] h-[70px]">
-                  <Image 
-                    src="/how-it-works.svg" 
-                    alt="How It Works" 
-                    fill
-                    className="cursor-pointer hover:opacity-90"
+                    src="/take-survey.png" 
+                    alt="Take Survey" 
+                    width={240} 
+                    height={70}
+                    className="w-full max-w-xs h-auto mx-auto"
                     priority
                   />
-                </div>
+                </button>
               </div>
             </div>
           </div>
