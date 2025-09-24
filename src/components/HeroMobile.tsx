@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import SurveyCardWrapper from './SurveyCardWrapper';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const HeroMobile: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const [showSurvey, setShowSurvey] = useState(false);
 
@@ -12,7 +14,7 @@ const HeroMobile: React.FC = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden md:overflow-x-hidden">
+  <section id="hero" className="relative min-h-[60vh] w-full flex flex-col items-center justify-center overflow-hidden md:overflow-x-hidden">
       {/* Logo in top-left corner */}
       <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
         <Image
@@ -37,7 +39,7 @@ const HeroMobile: React.FC = () => {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col w-full h-full pt-16 pb-8 px-4 sm:px-8 md:px-16 lg:px-24">
+  <div className="relative z-10 flex flex-col w-full h-full pt-8 pb-4 px-2 sm:px-4 md:px-8 lg:px-12">
         {/* Title and subtitle */}
         <div className="w-full max-w-4xl mb-2 sm:mb-4">
           <div
@@ -119,8 +121,8 @@ const HeroMobile: React.FC = () => {
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-start items-center sm:items-start mt-8 mb-6 sm:mb-10 w-full max-w-2xl">
+  {/* CTA Buttons */}
+  <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-start items-center sm:items-start mt-4 mb-4 sm:mb-6 w-full max-w-2xl">
           <div className="w-full sm:w-auto flex justify-center sm:block">
             <div 
               className="inline-block"
@@ -139,7 +141,7 @@ const HeroMobile: React.FC = () => {
             >
               <button
                 style={{ width: '100%', height: '100%', background: 'transparent', border: 'none', boxShadow: 'none', borderRadius: 0, padding: 0 }}
-                onClick={() => setShowSurvey(true)}
+                onClick={() => router.push('/survey')}
               >
                 <Image 
                   src="/signup.png" 
@@ -193,7 +195,10 @@ const HeroMobile: React.FC = () => {
             </div>
           </div>
         </div>
-  {/* Modal logic removed as requested */}
+        {/* Coming Soon SVG at the bottom */}
+        <div className="w-full flex justify-center items-end mt-auto pb-2">
+          <Image src="/coming-soon.svg" alt="Coming Soon" width={320} height={60} className="object-contain w-full max-w-xs h-auto" priority />
+        </div>
       </div>
     </section>
   );

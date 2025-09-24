@@ -304,22 +304,27 @@ const SurveySection: React.FC = () => {
     {/* Logo in top-left corner */}
     <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
        <button
-         aria-label="Go to Hero Section"
-         onClick={() => router.push('/#hero')}
+         aria-label="Go to Home Hero Section"
+         onClick={() => router.push('/')}
          style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, cursor: 'pointer' }}
        >
          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
        </button>
     </div>
-  <div className="w-full max-w-md mx-auto relative z-30" style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25)' }}>
+  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 32px)', /* removed overflowY: 'auto' */ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <form
-        className="p-0 w-full flex flex-col gap-6 text-xs sm:text-base"
+        className="p-0 w-full flex flex-col gap-4 text-[0.85rem] sm:text-[1rem]"
         style={{
           backgroundImage: 'url(/form.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           borderRadius: '1rem',
+          minHeight: '420px',
+          maxHeight: 'calc(100vh - 64px)',
+          /* removed overflowY: 'auto' */
+          justifyContent: 'center',
+          paddingBottom: '24px',
         }}
         onSubmit={e => e.preventDefault()}
       >
@@ -343,7 +348,7 @@ const SurveySection: React.FC = () => {
         <div className="flex flex-col gap-3">
           {/* Only show label if not email or not on share card */}
           {current.type !== 'email' && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center' }}>{current.label}</div>
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ fontSize: '1rem', whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
             <>
@@ -361,7 +366,7 @@ const SurveySection: React.FC = () => {
               {current.options.map(opt => {
                 const checked = answers[current.name] === opt;
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]" style={{ minHeight: '40px', fontSize: '0.95rem' }}>
                     <input
                       type="radio"
                       name={current.name}
@@ -370,7 +375,9 @@ const SurveySection: React.FC = () => {
                       onChange={handleChange}
                       style={{ display: 'none' }}
                     />
-                    {checked ? <RadioOn /> : <RadioOff />}
+                    <span style={{ width: '32px', height: '28px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+                      {checked ? <RadioOn /> : <RadioOff />}
+                    </span>
                     {opt}
                   </label>
                 );
@@ -382,7 +389,7 @@ const SurveySection: React.FC = () => {
               {current.options.map(opt => {
                 const checked = Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt);
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]">
+                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]" style={{ minHeight: '40px', fontSize: '0.95rem' }}>
                     <input
                       type="checkbox"
                       name={current.name}
@@ -391,7 +398,9 @@ const SurveySection: React.FC = () => {
                       onChange={handleChange}
                       style={{ display: 'none' }}
                     />
-                    {checked ? <CheckboxOn /> : <CheckboxOff />}
+                    <span style={{ width: '32px', height: '28px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+                      {checked ? <CheckboxOn /> : <CheckboxOff />}
+                    </span>
                     {opt}
                   </label>
                 );
@@ -427,7 +436,7 @@ const SurveySection: React.FC = () => {
             <div className="flex flex-col gap-4 items-center justify-center mt-8 mb-8">
               <button
                 type="button"
-                className="pixel-button px-6 py-4 bg-blue-600 text-white rounded border-2 border-blue-700 shadow w-full max-w-xs font-bold text-lg"
+                className="pixel-button px-6 py-4 bg-blue-600 text-white rounded border-2 border-blue-700 shadow w-full max-w-xs font-bold text-base"
                 onClick={() => {
                   const tweetText = encodeURIComponent('I just completed the OriginForge survey! Check it out and help shape the future of gaming achievements. #OriginForge #Survey https://originforge.games');
                   window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
@@ -435,23 +444,23 @@ const SurveySection: React.FC = () => {
               >Share it on X!</button>
               <button
                 type="button"
-                className="pixel-button px-6 py-4 bg-purple-600 text-white rounded border-2 border-purple-700 shadow w-full max-w-xs font-bold text-lg"
+                className="pixel-button px-6 py-4 bg-purple-600 text-white rounded border-2 border-purple-700 shadow w-full max-w-xs font-bold text-base"
                 onClick={() => window.open('https://discord.gg/your-discord-link', '_blank')}
               >Join Discord</button>
             </div>
           ) : (
             <div className="flex justify-between mt-4 pb-4">
-              <button type="button" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))} style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Image src="/previous.png" alt="Previous" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+              <button type="button" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))} style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', width: '180px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Image src="/previous.png" alt="Previous" width={180} height={60} style={{ width: '180px', height: '60px', boxShadow: 'none', background: 'none', display: 'block' }} />
               </button>
               {step === questions.length - 2 ? (
                 <button
                   type="button"
                   disabled={!isAnswered}
                   onClick={submitSurvey}
-                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', width: '180px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 >
-                  <Image src="/submit.png" alt="Submit" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+                  <Image src="/submit.png" alt="Submit" width={180} height={60} style={{ width: '180px', height: '60px', boxShadow: 'none', background: 'none', display: 'block' }} />
                 </button>
               ) : (
                 <button
@@ -460,9 +469,9 @@ const SurveySection: React.FC = () => {
                   onClick={() => {
                     setStep(s => Math.min(questions.length-1, s+1));
                   }}
-                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                  style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', width: '180px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 >
-                  <Image src="/next.png" alt="Next" width={180} height={60} style={{ height: 'auto', boxShadow: 'none', background: 'none', display: 'block' }} />
+                  <Image src="/next.png" alt="Next" width={180} height={60} style={{ width: '180px', height: '60px', boxShadow: 'none', background: 'none', display: 'block' }} />
                 </button>
               )}
             </div>

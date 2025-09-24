@@ -1,17 +1,18 @@
-
 import React, { useState } from 'react';
 import SurveyCardWrapper from './SurveyCardWrapper';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const HeroDesktop: React.FC = () => {
   const [showSurvey, setShowSurvey] = useState(false);
+  const router = useRouter();
 
   if (showSurvey) {
     return <SurveyCardWrapper />;
   }
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[60vh] w-full flex flex-col items-center justify-center overflow-hidden">
       {/* Logo in top-left corner */}
       <div className="absolute top-0 left-0 z-20 p-4">
         <Image
@@ -86,7 +87,7 @@ const HeroDesktop: React.FC = () => {
                     fill
                     className="cursor-pointer hover:opacity-90 object-contain"
                     priority
-                    onClick={() => setShowSurvey(true)}
+                    onClick={() => router.push('/survey')}
                   />
                 </div>
                 
@@ -116,6 +117,10 @@ const HeroDesktop: React.FC = () => {
                 <Image src="/xbox.svg" alt="Xbox" width={150} height={150} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
               </span>
             </div>
+          </div>
+          {/* Coming Soon SVG at the bottom */}
+          <div className="w-full flex justify-center items-end mt-auto pb-2">
+            <Image src="/coming-soon.svg" alt="Coming Soon" width={320} height={60} className="object-contain w-full max-w-xs h-auto" priority />
           </div>
         </div>
       </div>
