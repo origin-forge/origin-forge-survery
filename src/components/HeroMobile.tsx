@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import SurveyCardWrapper from './SurveyCardWrapper';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -7,14 +6,15 @@ const HeroMobile: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const [showSurvey, setShowSurvey] = useState(false);
-
-  if (showSurvey) {
-    return <SurveyCardWrapper />;
-  }
 
   return (
-  <section id="hero" className="relative min-h-[60vh] w-full flex flex-col items-center justify-center overflow-hidden md:overflow-x-hidden">
+  <section 
+    id="hero" 
+    className="relative w-full flex flex-col items-center justify-center overflow-hidden"
+    style={{
+      minHeight: '100dvh', // Use dynamic viewport height for mobile
+    }}
+  >
       {/* Logo in top-left corner */}
       <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
         <Image
@@ -26,36 +26,22 @@ const HeroMobile: React.FC = () => {
           priority
         />
       </div>
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/bg.png"
-          alt="Background"
-          fill
-          className="object-cover w-full h-full"
-          priority
-          quality={100}
-          sizes="100vw"
-        />
-      </div>
 
-  <div className="relative z-10 flex flex-col w-full h-full pt-8 pb-4 px-2 sm:px-4 md:px-8 lg:px-12">
+  <div className="relative z-10 flex flex-col w-full h-full pt-8 pb-4 px-2 sm:px-4 md:px-8 lg:px-12" style={{ height: '100dvh' }}>
         {/* Title and subtitle */}
-        <div className="w-full max-w-4xl mb-2 sm:mb-4">
+        <div className="w-full max-w-4xl mt-24 mb-2 sm:mb-4">
           <div
             ref={textRef}
             className="font-press-start flex flex-col items-center w-full select-none"
           >
             <div 
-              className="w-full max-w-md mx-auto text-center px-2"
+              className="w-full mx-auto text-center px-4"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: '0px 8px',
                 gap: '20px',
-                width: '100%',
                 flex: 'none',
                 order: 0,
                 alignSelf: 'center',
@@ -63,15 +49,12 @@ const HeroMobile: React.FC = () => {
               }}
             >
               <span
-                className="break-words text-white text-[7vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw] xl:text-[2.8vw] font-bold text-center tracking-[0.04em] leading-[1.1]"
+                className="whitespace-nowrap text-white text-[4.8vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.8vw] xl:text-[2.5vw] font-bold text-center tracking-[0.04em] leading-[1.1]"
                 style={{
                   marginRight: '0',
                   marginBottom: '4px',
                   WebkitTextStroke: '1px #000',
                   textShadow: '0 1px 2px #000',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'break-word',
-                  width: '100%',
                   color: '#fff',
                   WebkitTextFillColor: '#fff'
                 }}
@@ -100,10 +83,10 @@ const HeroMobile: React.FC = () => {
               style={{
                 width: '100%',
                 maxWidth: '600px',
-                fontFamily: 'BB Torsos Pro, sans-serif',
+                fontFamily: 'var(--font-geist-mono)',
                 fontStyle: 'normal',
-                fontWeight: 450,
-                fontSize: '18px',
+                fontWeight: 400,
+                fontSize: '14px',
                 lineHeight: '125%',
                 textTransform: 'uppercase',
                 color: '#000',
@@ -122,7 +105,7 @@ const HeroMobile: React.FC = () => {
         </div>
 
         {/* Take Survey Button Centered */}
-        <div className="flex flex-col items-center justify-center w-full mt-0 mb-24">
+        <div className="flex flex-col items-center justify-center w-full mt-0 mb-4">
           <button
             style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
             onClick={() => router.push('/survey')}
@@ -137,9 +120,25 @@ const HeroMobile: React.FC = () => {
             />
           </button>
         </div>
-        {/* Coming Soon SVG at the bottom */}
-        <div className="w-full flex justify-center items-end mt-auto pb-2">
-          <Image src="/coming-soon.svg" alt="Coming Soon" width={320} height={60} className="object-contain w-full max-w-xs h-auto" priority />
+
+        {/* Platform Icons Row */}
+        <div className="w-full flex justify-center mt-2 mb-4">
+          <div className="flex flex-row flex-wrap gap-4 justify-center items-center w-full max-w-xs">
+            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
+              <Image src="/steam.svg" alt="Steam" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            </span>
+            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
+              <Image src="/ps.svg" alt="PlayStation" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            </span>
+            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
+              <Image src="/xbox.svg" alt="Xbox" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            </span>
+          </div>
+        </div>
+
+        {/* Coming Soon SVG */}
+        <div className="w-full flex justify-center mt-4 mb-8">
+          <Image src="/coming-soon.svg" alt="Coming Soon" width={160} height={60} className="w-48 h-auto object-contain" priority />
         </div>
       </div>
     </section>

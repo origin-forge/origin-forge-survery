@@ -330,7 +330,7 @@ const SurveySection: React.FC = () => {
       >
           <div className="w-full flex justify-center items-center">
             <span
-              className="bg-yellow-300 font-bold rounded shadow"
+              className="bg-yellow-300 font-bold rounded"
               style={{
                 color: '#6b4f2c', // brown
                 padding: '4px 16px',
@@ -366,7 +366,7 @@ const SurveySection: React.FC = () => {
               {current.options.map(opt => {
                 const checked = answers[current.name] === opt;
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]" style={{ minHeight: '40px', fontSize: '0.95rem' }}>
+                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
                     <input
                       type="radio"
                       name={current.name}
@@ -389,7 +389,7 @@ const SurveySection: React.FC = () => {
               {current.options.map(opt => {
                 const checked = Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt);
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-2 py-1 rounded bg-white border border-yellow-200 hover:bg-yellow-100 cursor-pointer text-[#6b4f2c]" style={{ minHeight: '40px', fontSize: '0.95rem' }}>
+                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
                     <input
                       type="checkbox"
                       name={current.name}
@@ -426,7 +426,7 @@ const SurveySection: React.FC = () => {
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
               <div className="mb-6 text-center font-press-start text-yellow-700 text-base sm:text-lg">Ready to level up your social XP? Our Discord is where the real loot drops!</div>
-              <button type="button" className="pixel-button bg-blue-600 text-white px-8 py-4 rounded shadow text-lg font-press-start" onClick={() => window.open('https://discord.gg/your-discord-link', '_blank')}>Join Discord</button>
+              <button type="button" className="pixel-button bg-blue-600 text-white px-8 py-4 rounded shadow text-lg font-press-start" onClick={() => window.open('https://discord.gg/yGpbx2hW', '_blank')}>Join Discord</button>
             </div>
           )}
         </div>
@@ -445,7 +445,7 @@ const SurveySection: React.FC = () => {
               <button
                 type="button"
                 className="pixel-button px-6 py-4 bg-purple-600 text-white rounded border-2 border-purple-700 shadow w-full max-w-xs font-bold text-base"
-                onClick={() => window.open('https://discord.gg/your-discord-link', '_blank')}
+                onClick={() => window.open('https://discord.gg/yGpbx2hW', '_blank')}
               >Join Discord</button>
             </div>
           ) : (

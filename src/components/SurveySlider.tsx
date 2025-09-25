@@ -5,7 +5,7 @@ import { saveSurveyResponse } from "../lib/supabase";
 
 // Pixel art styling
 const pixelPanel = "bg-[#FFE5B4] border-4 border-black p-6 w-full max-w-2xl";
-const optionButton = "w-full text-left p-4 mb-3 border-4 border-black bg-white hover:bg-[#FFD700] transition-colors duration-200 text-black font-mono text-sm sm:text-base flex items-center";
+const optionButton = "w-full text-left p-6 mb-3 border-4 border-black bg-white hover:bg-[#FFD700] transition-colors duration-200 text-black font-mono text-sm sm:text-base flex items-center";
 const selectedOption = "bg-[#FFD700] border-4 border-black font-bold";
 const nextButton = "w-full bg-black hover:bg-gray-800 text-white font-mono py-3 px-6 border-4 border-black mt-6 text-sm sm:text-base";
 
@@ -143,6 +143,8 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
               name="email"
               required
               autoFocus
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              title="Please enter a valid email address"
               className="block w-full max-w-xs mx-auto border-4 border-black bg-white text-black text-sm sm:text-base px-4 py-3 outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 pixel-font"
               placeholder="Enter your email"
             />
@@ -170,7 +172,7 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
             <button
               type="button"
               onClick={() => setStep((s) => s - 1)}
-              className="text-blue-600 hover:text-blue-800 font-medium px-4 py-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-mono py-3 px-6 border-4 border-black text-sm sm:text-base"
             >
               ← Back
             </button>
