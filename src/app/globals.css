@@ -33,15 +33,16 @@
 }
 
 
-html {
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
+html, body {
+  min-height: 100svh;
+  height: 100svh;
+  width: 100vw;
+  overflow: auto;
   background-image: url('/bg.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center bottom;
-  background-attachment: fixed;
+  background-position: center;
+  background-color: transparent !important;
 }
 /* Pixelated button style for Press Start 2P theme */
 .btn, button, .pixel-btn {
@@ -97,8 +98,10 @@ html {
   scroll-behavior: smooth;
 }
 
-.group:hover .platform-icon[src*="steam.svg"] {
-  filter: brightness(0) saturate(100%) invert(13%) sepia(100%) saturate(7481%) hue-rotate(209deg) brightness(95%) contrast(101%);
+body {
+  background-color: transparent !important;
+  color: white;
+  font-family: system-ui, sans-serif;
 }
 
 .gaming-border {
@@ -301,7 +304,6 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-foreground;
-    background-color: transparent;
+    @apply bg-background text-foreground;
   }
 }

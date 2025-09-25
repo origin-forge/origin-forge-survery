@@ -220,18 +220,21 @@ const questions = [
     type: "text",
     name: "frustration",
     maxLength: 200,
+    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-24"
   },
   {
     label: "What would make you excited to try OriginForge?",
     type: "text",
     name: "excited",
     maxLength: 200,
+    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-24"
   },
   {
     label: "Any other thoughts or questions about unified gaming identity?",
     type: "text",
     name: "thoughts",
     maxLength: 300,
+    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-32"
   },
   {
     label: "Want to be notified when OriginForge launches*?",
@@ -348,13 +351,20 @@ const SurveySection: React.FC = () => {
         <div className="flex flex-col gap-3">
           {/* Only show label if not email or not on share card */}
           {current.type !== 'email' && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ fontSize: '1rem', whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center' }}>{current.label}</div>
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
-            <>
+            <div className="w-full px-4 sm:px-6">
               <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
-              <input type="email" name={current.name} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full bg-white text-yellow-900 focus:border-yellow-600" required value={answers[current.name] || ''} onChange={handleChange} />
-            </>
+              <input 
+                type="email" 
+                name={current.name} 
+                className="p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full" 
+                required 
+                value={answers[current.name] || ''} 
+                onChange={handleChange} 
+              />
+            </div>
           )}
           {current.type === 'email' && showShareCard && (
             <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow text-center">
@@ -362,11 +372,11 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'radio' && current.options && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 px-4">
               {current.options.map(opt => {
                 const checked = answers[current.name] === opt;
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
+                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
                     <input
                       type="radio"
                       name={current.name}
@@ -385,11 +395,11 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'checkbox' && current.options && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 px-4">
               {current.options.map(opt => {
                 const checked = Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt);
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
+                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
                     <input
                       type="checkbox"
                       name={current.name}
@@ -421,7 +431,17 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'text' && (
-            <textarea maxLength={current.maxLength} className="border-2 border-yellow-300 rounded-xl px-2 py-1 w-full mb-2 bg-white text-yellow-900 focus:border-yellow-600" placeholder={`${current.maxLength} characters max`} name={current.name} value={answers[current.name] || ''} onChange={handleChange} />
+            <div className="w-full px-4 sm:px-6">
+              <textarea 
+                maxLength={current.maxLength} 
+                className={current.className || "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full min-h-24"} 
+                placeholder={`${current.maxLength} characters max`} 
+                name={current.name} 
+                value={answers[current.name] || ''} 
+                onChange={handleChange} 
+                style={{ resize: 'vertical' }}
+              />
+            </div>
           )}
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
