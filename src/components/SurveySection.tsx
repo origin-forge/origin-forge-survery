@@ -303,7 +303,7 @@ const SurveySection: React.FC = () => {
   };
 
   return (
-  <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+  <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '140px'}}>
     {/* Logo in top-left corner */}
     <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
        <button
@@ -314,7 +314,7 @@ const SurveySection: React.FC = () => {
          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
        </button>
     </div>
-  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 32px)', /* removed overflowY: 'auto' */ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 140px)', /* keep content above grass */ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <form
         className="p-0 w-full flex flex-col gap-4 text-[0.85rem] sm:text-[1rem]"
         style={{
@@ -324,7 +324,7 @@ const SurveySection: React.FC = () => {
           backgroundRepeat: 'no-repeat',
           borderRadius: '1rem',
           minHeight: '420px',
-          maxHeight: 'calc(100vh - 64px)',
+          maxHeight: 'calc(100vh - 180px)',
           /* removed overflowY: 'auto' */
           justifyContent: 'center',
           paddingBottom: '24px',
