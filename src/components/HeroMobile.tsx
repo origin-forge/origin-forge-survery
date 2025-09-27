@@ -121,8 +121,25 @@ const HeroMobile: React.FC = () => {
           </button>
         </div>
 
+        {/* About Us Button */}
+        <div className="flex flex-col items-center justify-center w-full mb-4">
+          <button
+            style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+            onClick={() => router.push('/about')}
+          >
+            <Image 
+              src="/aboutus.png" 
+              alt="About Us" 
+              width={320} 
+              height={120}
+              className="w-full max-w-sm h-auto mx-auto"
+              priority
+            />
+          </button>
+        </div>
+
         {/* Platform Icons Row */}
-        <div className="w-full flex justify-center mt-2 mb-4">
+        <div className="w-full flex justify-center -mt-2 mb-4">
           <div className="flex flex-row flex-wrap gap-4 justify-center items-center w-full max-w-xs">
             <span className="inline-flex items-center justify-center w-20 h-20 transition group">
               <Image src="/steam.svg" alt="Steam" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
@@ -137,8 +154,8 @@ const HeroMobile: React.FC = () => {
         </div>
 
         {/* Coming Soon SVG */}
-        <div className="w-full flex justify-center mt-4 mb-8">
-          <Image src="/coming-soon.svg" alt="Coming Soon" width={160} height={60} className="w-48 h-auto object-contain" priority />
+        <div className="w-full flex justify-center -mt-8 mb-8">
+          <Image src="/coming-soon.svg" alt="Coming Soon" width={180} height={68} className="w-44 h-auto object-contain" priority />
         </div>
       </div>
     </section>
