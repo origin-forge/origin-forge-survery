@@ -442,7 +442,7 @@ const SurveySection: React.FC = () => {
                 type="button"
                 className="pixel-button px-6 py-4 bg-blue-600 text-white rounded border-2 border-blue-700 shadow w-full max-w-xs font-bold text-base"
                 onClick={() => {
-                  const tweetText = encodeURIComponent('I just completed the OriginForge survey! Check it out and help shape the future of gaming achievements. #OriginForge #Survey https://originforge.games');
+                  const tweetText = encodeURIComponent('🎮 The future of gaming identity is here! @0xoriginforge is building the first DID-based identity platform for gamers - imagine one unified profile across ALL your games. Just took their survey to help shape this revolution! #Web3Gaming #GameDev https://originforge.games');
                   window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
                 }}
               >Share it on X!</button>
@@ -454,9 +454,12 @@ const SurveySection: React.FC = () => {
             </div>
           ) : (
             <div className="flex justify-between mt-4 pb-4">
-              <button type="button" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s-1))} style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', width: '180px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Image src="/previous.png" alt="Previous" width={180} height={60} style={{ width: '180px', height: '60px', boxShadow: 'none', background: 'none', display: 'block' }} />
-              </button>
+              {step > 0 && (
+                <button type="button" onClick={() => setStep(s => Math.max(0, s-1))} style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0, margin: '0 16px', width: '180px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Image src="/previous.png" alt="Previous" width={180} height={60} style={{ width: '180px', height: '60px', boxShadow: 'none', background: 'none', display: 'block' }} />
+                </button>
+              )}
+              {step === 0 && <div style={{ width: '180px' }}></div>}
               {step === questions.length - 2 ? (
                 <button
                   type="button"

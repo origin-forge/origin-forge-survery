@@ -161,39 +161,39 @@ export default function AboutPage() {
             {activeSection === 'mission' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR MISSION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">OriginForge is revolutionizing the gaming world by creating a unified, blockchain-secured platform where gamers can consolidate all their achievements, progress, and gaming identity across every platform they play on. No more scattered achievements across Steam, PlayStation, Xbox, and other platforms.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">We believe every gamer deserves to own their digital legacy and showcase their complete gaming journey in one powerful, verifiable profile.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We're building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We're not just another identity provider; we're the infrastructure layer that will power the next generation of gaming.</p>
               </div>
             )}
             {activeSection === 'vision' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR VISION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">Imagine a world where your gaming achievements are truly yours - stored on the blockchain, verifiable, and transferable. Where you can prove your gaming prowess with cryptographic certainty, and where your digital gaming identity transcends individual platforms.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">OriginForge will be the universal gaming passport that connects all your gaming experiences into one epic, verifiable story.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We're building the decentralized identity infrastructure that becomes the industry standard.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Imagine a future where every major game uses OriginForge for secure authentication, and every serious gamer has their verified profile. <strong>One platform connecting the entire gaming ecosystem through trust and verifiable identity.</strong></p>
               </div>
             )}
             {activeSection === 'features' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KEY FEATURES</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Unified Achievements</h3><p className="text-gray-700 text-xs md:text-sm">All your gaming achievements in one place, regardless of platform</p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Blockchain Security</h3><p className="text-gray-700 text-xs md:text-sm">Your gaming data is secured and owned by you, not the platforms</p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">NFT Achievements</h3><p className="text-gray-700 text-xs md:text-sm">Rare achievements become verifiable NFTs you truly own</p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Cross-Platform</h3><p className="text-gray-700 text-xs md:text-sm">Works with Steam, PlayStation, Xbox, Nintendo, and more</p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">OAuth for Games</h3><p className="text-gray-700 text-xs md:text-sm">DID-based authentication with SDKs for Unity, Unreal, and web games. <strong>Integrate in minutes, secure forever.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Fraud Prevention API</h3><p className="text-gray-700 text-xs md:text-sm">AI-powered cheater detection, ban evasion tracking, and reputation scoring. <strong>Protect your players automatically.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Premium Profiles</h3><p className="text-gray-700 text-xs md:text-sm">Verified gaming identity for tournaments and professional networking. <strong>Your credibility, proven.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Analytics Dashboard</h3><p className="text-gray-700 text-xs md:text-sm">Player insights, retention metrics, and behavioral analytics for developers. <strong>Data that drives decisions.</strong></p></div>
                 </div>
               </div>
             )}
             {activeSection === 'technology' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>TECHNOLOGY</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">Built on cutting-edge blockchain technology, OriginForge uses smart contracts to securely verify and store your gaming achievements. Our platform integrates with major gaming APIs to automatically sync your progress while maintaining complete privacy and security.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">We&apos;re leveraging the power of decentralized technology to give gamers true ownership of their digital gaming identity for the first time in history.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">Built on Polkadot substrate with Web3 Foundation backing, we deliver <strong>enterprise-grade infrastructure</strong> that scales. Our AI-enhanced fraud detection uses machine learning for reputation scoring, device fingerprinting, and cross-game correlation analysis to eliminate cheaters and protect legitimate players.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our architecture: Event ingestion APIs → Message queue → ML processing → Real-time risk assessment. <strong>99.9% uptime SLA with sub-100ms authentication response times.</strong> Built for the demanding performance requirements of modern gaming.</p>
               </div>
             )}
             {activeSection === 'join' && (
               <div className="w-full text-center">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">Ready to forge your ultimate gaming legacy? Take our survey to help shape the future of gaming identity and be among the first to experience OriginForge.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">We're raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <button onClick={() => router.push('/survey')} style={{ background: 'none', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}>
                     <Image 
