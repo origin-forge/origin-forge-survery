@@ -331,27 +331,11 @@ const SurveySection: React.FC = () => {
         }}
         onSubmit={e => e.preventDefault()}
       >
-          <div className="w-full flex justify-center items-center">
-            <span
-              className="bg-yellow-300 font-bold rounded"
-              style={{
-                color: '#6b4f2c', // brown
-                padding: '4px 16px',
-                fontSize: '1.1rem',
-                minWidth: '64px',
-                textAlign: 'center',
-                display: 'inline-block',
-                marginTop: '16px',
-              }}
-            >
-              {step + 1} / {questions.length}
-            </span>
-          </div>
         {/* Single Question Card */}
         <div className="flex flex-col gap-3">
           {/* Only show label if not email or not on share card */}
           {current.type !== 'email' && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)' }}>{current.label}</div>
+            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow pt-4" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
             <div className="w-full px-4 sm:px-6">

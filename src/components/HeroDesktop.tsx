@@ -148,16 +148,27 @@ const HeroDesktop: React.FC = () => {
             </div>
           </div>
 
-          {/* Coming Soon SVG */}
-          <div className="absolute right-4 sm:right-8 md:right-12 lg:right-20 bottom-4 sm:bottom-6 md:bottom-8 z-20">
-            <Image 
-              src="/coming-soon.svg" 
-              alt="Coming Soon" 
-              width={400} 
-              height={150} 
-              className="w-48 sm:w-64 md:w-80 lg:w-96 h-auto object-contain transition-transform hover:scale-105" 
-              priority 
-            />
+          {/* Coming Soon SVG - Positioned absolutely within the hero section */}
+          <div className="absolute right-4 sm:right-8 md:right-12 lg:right-20 bottom-12 sm:bottom-16 md:bottom-20 z-30" style={{ pointerEvents: 'none' }}>
+            <div className="relative" style={{ height: 'auto', width: '100%' }}>
+              <Image 
+                src="/coming-soon.svg" 
+                alt="Coming Soon" 
+                width={300} 
+                height={112} 
+                className="w-36 sm:w-48 md:w-56 lg:w-64 h-auto object-contain transition-transform hover:scale-105" 
+                priority
+                style={{ 
+                  position: 'relative',
+                  bottom: 0,
+                  right: 0,
+                  maxWidth: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  pointerEvents: 'auto'
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
