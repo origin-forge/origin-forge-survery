@@ -14,17 +14,23 @@ const HeroMobile: React.FC = () => {
     id="hero" 
     className="relative w-full flex flex-col items-center justify-start overflow-auto"
     style={{
-      minHeight: '100dvh', // Use dynamic viewport height for mobile
+      minHeight: '100dvh',
+      backgroundImage: 'url(/bg.svg)',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'local',
+      backgroundColor: '#000',
     }}
   >
       {/* Logo in top-left corner */}
-      <div className="absolute top-0 left-0 z-20 p-1 sm:p-2">
+      <div className="absolute top-0 left-0 z-20 p-2 sm:p-3">
         <Image
           src="/logo.svg"
           alt="OriginForge Logo"
-          width={48}
-          height={48}
-          className="w-8 h-8 sm:w-12 sm:h-12 object-contain"
+          width={64}
+          height={64}
+          className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
           priority
         />
       </div>
@@ -124,22 +130,22 @@ const HeroMobile: React.FC = () => {
 
         {/* Platform Icons Row */}
         <div className="w-full flex justify-center mb-2">
-          <div className="flex flex-row flex-wrap gap-3 justify-center items-center w-full max-w-xs">
-            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
-              <Image src="/steam.svg" alt="Steam" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+          <div className="flex flex-row flex-wrap gap-2 justify-center items-center w-full max-w-xs">
+            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
+              <Image src="/steam.svg" alt="Steam" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
-            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
-              <Image src="/ps.svg" alt="PlayStation" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
+              <Image src="/ps.svg" alt="PlayStation" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
-            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
-              <Image src="/xbox.svg" alt="Xbox" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
+              <Image src="/xbox.svg" alt="Xbox" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
           </div>
         </div>
 
         {/* Coming Soon SVG */}
         <div className="w-full flex justify-center mt-2 mb-4">
-          <Image src="/coming-soon.svg" alt="Coming Soon" width={150} height={56} className="w-32 h-auto object-contain" priority />
+          <Image src="/coming-soon.svg" alt="Coming Soon" width={200} height={75} className="w-48 h-auto object-contain" priority />
         </div>
       </div>
     </section>

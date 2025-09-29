@@ -105,7 +105,8 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: transparent !important;
+  background-attachment: fixed;
+  background-color: #000 !important;
 }
 /* Pixelated button style for Press Start 2P theme */
 .btn, button, .pixel-btn {
