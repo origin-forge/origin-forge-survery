@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import TakeSurveyButton from './TakeSurveyButton';
+import AboutUsButton from './AboutUsButton';
 
 const HeroMobile: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
@@ -106,36 +108,18 @@ const HeroMobile: React.FC = () => {
 
         {/* Take Survey Button Centered */}
         <div className="flex flex-col items-center justify-center w-full mt-0 mb-4">
-          <button
-            style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+          <TakeSurveyButton
             onClick={() => router.push('/survey')}
-          >
-            <Image 
-              src="/take-survey.png" 
-              alt="Take Survey" 
-              width={440} 
-              height={160}
-              className="w-full max-w-xl h-auto mx-auto"
-              priority
-            />
-          </button>
+            className="w-full max-w-xl mx-auto"
+          />
         </div>
 
         {/* About Us Button */}
         <div className="flex flex-col items-center justify-center w-full mb-4">
-          <button
-            style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+          <AboutUsButton
             onClick={() => router.push('/about')}
-          >
-            <Image 
-              src="/aboutus.png" 
-              alt="About Us" 
-              width={320} 
-              height={120}
-              className="w-full max-w-sm h-auto mx-auto"
-              priority
-            />
-          </button>
+            className="w-full max-w-sm mx-auto"
+          />
         </div>
 
         {/* Platform Icons Row */}

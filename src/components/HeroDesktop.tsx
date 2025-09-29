@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SurveyCardWrapper from './SurveyCardWrapper';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import TakeSurveyButton from './TakeSurveyButton';
+import AboutUsButton from './AboutUsButton';
 
 const HeroDesktop: React.FC = () => {
   const [showSurvey, setShowSurvey] = useState(false);
@@ -83,34 +85,14 @@ const HeroDesktop: React.FC = () => {
               
               {/* Take Survey and About Us Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mt-6 sm:mt-8 mb-6 sm:mb-8">
-                <button
-                  style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+                <TakeSurveyButton
                   onClick={() => router.push('/survey')}
                   className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-xs"
-                >
-                  <Image 
-                    src="/take-survey.png" 
-                    alt="Take Survey" 
-                    width={300} 
-                    height={88}
-                    className="w-full h-auto mx-auto"
-                    priority
-                  />
-                </button>
-                <button
-                  style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
+                />
+                <AboutUsButton
                   onClick={() => router.push('/about')}
                   className="w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px]"
-                >
-                  <Image 
-                    src="/aboutus.png" 
-                    alt="About Us" 
-                    width={240} 
-                    height={70}
-                    className="w-full h-auto mx-auto"
-                    priority
-                  />
-                </button>
+                />
               </div>
             </div>
           </div>
