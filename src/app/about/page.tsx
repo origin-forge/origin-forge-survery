@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function AboutPage() {
@@ -161,14 +160,14 @@ export default function AboutPage() {
             {activeSection === 'mission' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR MISSION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We're building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We're not just another identity provider; we're the infrastructure layer that will power the next generation of gaming.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We&rsquo;re building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We&rsquo;re not just another identity provider; we&rsquo;re the infrastructure layer that will power the next generation of gaming.</p>
               </div>
             )}
             {activeSection === 'vision' && (
               <div className="w-full text-center md:text-left">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR VISION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We're building the decentralized identity infrastructure that becomes the industry standard.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We&rsquo;re building the decentralized identity infrastructure that becomes the industry standard.</p>
                 <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Imagine a future where every major game uses OriginForge for secure authentication, and every serious gamer has their verified profile. <strong>One platform connecting the entire gaming ecosystem through trust and verifiable identity.</strong></p>
               </div>
             )}
@@ -193,7 +192,7 @@ export default function AboutPage() {
             {activeSection === 'join' && (
               <div className="w-full text-center">
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">We're raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <button onClick={() => router.push('/survey')} style={{ background: 'none', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}>
                     <Image 
