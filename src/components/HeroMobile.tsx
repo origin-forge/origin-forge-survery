@@ -143,9 +143,9 @@ const HeroMobile: React.FC = () => {
           </div>
         </div>
 
-        {/* Coming Soon SVG */}
+        {/* Launch Soon Signboard */}
         <div className="w-full flex justify-center mt-2 mb-4">
-          <Image src="/coming-soon.svg" alt="Coming Soon" width={200} height={75} className="w-48 h-auto object-contain" priority />
+          <Image src="/launch_soon.svg" alt="Launch Soon" width={400} height={300} className="w-72 sm:w-80 h-auto object-contain" priority />
         </div>
       </div>
     </section>
