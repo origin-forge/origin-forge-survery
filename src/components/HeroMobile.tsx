@@ -12,26 +12,26 @@ const HeroMobile: React.FC = () => {
   return (
   <section 
     id="hero" 
-    className="relative w-full flex flex-col items-center justify-center overflow-hidden"
+    className="relative w-full flex flex-col items-center justify-start overflow-auto"
     style={{
       minHeight: '100dvh', // Use dynamic viewport height for mobile
     }}
   >
       {/* Logo in top-left corner */}
-      <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
+      <div className="absolute top-0 left-0 z-20 p-1 sm:p-2">
         <Image
           src="/logo.svg"
           alt="OriginForge Logo"
-          width={64}
-          height={64}
-          className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+          width={48}
+          height={48}
+          className="w-8 h-8 sm:w-12 sm:h-12 object-contain"
           priority
         />
       </div>
 
-  <div className="relative z-10 flex flex-col w-full h-full pt-8 pb-4 px-2 sm:px-4 md:px-8 lg:px-12" style={{ height: '100dvh' }}>
+  <div className="relative z-10 flex flex-col w-full min-h-full pt-6 pb-2 px-2 sm:px-4 md:px-8 lg:px-12">
         {/* Title and subtitle */}
-        <div className="w-full max-w-4xl mt-24 mb-2 sm:mb-4">
+        <div className="w-full max-w-4xl mt-16 mb-2">
           <div
             ref={textRef}
             className="font-press-start flex flex-col items-center w-full select-none"
@@ -107,7 +107,7 @@ const HeroMobile: React.FC = () => {
         </div>
 
         {/* Buttons Container */}
-        <div className="buttons-wrapper mt-8 mb-8 py-4">
+        <div className="buttons-wrapper mt-4 mb-4 py-2">
           <div className="button-container-small">
             <AboutUsButton
               onClick={() => router.push('/about')}
@@ -123,23 +123,23 @@ const HeroMobile: React.FC = () => {
         </div>
 
         {/* Platform Icons Row */}
-        <div className="w-full flex justify-center -mt-2 mb-4">
-          <div className="flex flex-row flex-wrap gap-4 justify-center items-center w-full max-w-xs">
-            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
-              <Image src="/steam.svg" alt="Steam" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+        <div className="w-full flex justify-center mb-2">
+          <div className="flex flex-row flex-wrap gap-3 justify-center items-center w-full max-w-xs">
+            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
+              <Image src="/steam.svg" alt="Steam" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
-            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
-              <Image src="/ps.svg" alt="PlayStation" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
+              <Image src="/ps.svg" alt="PlayStation" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
-            <span className="inline-flex items-center justify-center w-20 h-20 transition group">
-              <Image src="/xbox.svg" alt="Xbox" width={80} height={80} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
+            <span className="inline-flex items-center justify-center w-16 h-16 transition group">
+              <Image src="/xbox.svg" alt="Xbox" width={64} height={64} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
             </span>
           </div>
         </div>
 
         {/* Coming Soon SVG */}
-        <div className="w-full flex justify-center -mt-8 mb-8">
-          <Image src="/coming-soon.svg" alt="Coming Soon" width={180} height={68} className="w-44 h-auto object-contain" priority />
+        <div className="w-full flex justify-center mt-2 mb-4">
+          <Image src="/coming-soon.svg" alt="Coming Soon" width={150} height={56} className="w-32 h-auto object-contain" priority />
         </div>
       </div>
     </section>
