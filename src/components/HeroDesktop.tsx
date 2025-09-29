@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import SurveyCardWrapper from './SurveyCardWrapper';
+import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const HeroDesktop: React.FC = () => {
-  const [showSurvey, setShowSurvey] = useState(false);
   const router = useRouter();
 
-  if (showSurvey) {
-    return <SurveyCardWrapper />;
-  }
 
   return (
     <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
