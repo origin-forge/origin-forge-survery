@@ -115,14 +115,14 @@ const HeroDesktop: React.FC = () => {
         </div>
 
         {/* Second Column - Launch Soon Image (35% width) */}
-        <div className="w-1/3 flex items-end justify-center  pb-0">
+        <div className="w-1/3 flex items-end justify-center pb-0">
           <div className="relative w-full flex items-end justify-center">
             <Image
               src="/launch_soon.svg"
               alt="Launch Soon"
               width={1800}
               height={2000}
-              className="w-full h-auto max-w-none object-contain"
+              className="w-full h-auto max-w-none object-contain coming-soon-image"
               priority
               style={{
                 objectFit: 'contain',
@@ -136,6 +136,48 @@ const HeroDesktop: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        .coming-soon-image {
+          /* Default styles already in inline style */
+        }
+        
+        /* Large screens (1440px and up) */
+        @media (min-width: 1440px) {
+          .coming-soon-image {
+            transform: scale(2.5) !important;
+            min-height: 1000px !important;
+            margin-bottom: -25px !important;
+          }
+        }
+        
+        /* Medium-large screens (1200px to 1439px) */
+        @media (min-width: 1200px) and (max-width: 1439px) {
+          .coming-soon-image {
+            transform: scale(2.2) !important;
+            min-height: 900px !important;
+            margin-bottom: -16px !important;
+          }
+        }
+        
+        /* Medium screens (1024px to 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+          .coming-soon-image {
+            transform: scale(1.9) !important;
+            min-height: 800px !important;
+            margin-bottom: -12px !important;
+          }
+        }
+        
+        /* Small-medium screens (768px to 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .coming-soon-image {
+            transform: scale(1.6) !important;
+            min-height: 700px !important;
+            margin-bottom: -8px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
