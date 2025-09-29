@@ -41,7 +41,7 @@ const AboutUsButton: React.FC<AboutUsButtonProps> = ({ onClick, className = "" }
           y="30"
           textAnchor="middle"
           fill="white"
-          fontSize="12"
+          fontSize="15"
           fontFamily="'Press Start 2P', 'Courier New', monospace"
         >
           ABOUT US

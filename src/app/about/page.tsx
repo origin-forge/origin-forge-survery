@@ -3,6 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import SidebarMissionButton from '../../components/SidebarMissionButton';
+import SidebarVisionButton from '../../components/SidebarVisionButton';
+import SidebarFeaturesButton from '../../components/SidebarFeaturesButton';
+import SidebarTechnologyButton from '../../components/SidebarTechnologyButton';
+import SidebarJoinUsButton from '../../components/SidebarJoinUsButton';
+import TakeSurveyButton from '../../components/TakeSurveyButton';
 
 export default function AboutPage() {
   // Prevent scrolling on /about by setting overflow hidden on html and body
@@ -23,11 +29,11 @@ export default function AboutPage() {
   const [activeSection, setActiveSection] = useState('mission');
 
   const navigationItems = [
-    { id: 'mission', label: 'Our Mission', icon: '/our-mission.png' },
-    { id: 'vision', label: 'Our Vision', icon: '/our-vision.png' },
-    { id: 'features', label: 'Key Features', icon: '/features.png' },
-    { id: 'technology', label: 'Technology', icon: '/technology.png' },
-    { id: 'join', label: 'Join Us', icon: '/join-us.png' }
+    { id: 'mission', label: 'Our Mission', component: SidebarMissionButton },
+    { id: 'vision', label: 'Our Vision', component: SidebarVisionButton },
+    { id: 'features', label: 'Key Features', component: SidebarFeaturesButton },
+    { id: 'technology', label: 'Technology', component: SidebarTechnologyButton },
+    { id: 'join', label: 'Join Us', component: SidebarJoinUsButton }
   ];
 
   const showSection = (sectionId: string) => {
@@ -103,29 +109,21 @@ export default function AboutPage() {
           {/* Navigation Items with PNGs and centered logo */}
           <nav className="flex flex-col items-center justify-center h-full w-full md:w-auto py-4 bg-white/10 md:bg-transparent">
             <div className="flex flex-col w-full items-center justify-center" style={{ gap: '32px' }}>
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => showSection(item.id)}
-                  className={`flex items-center justify-center bg-transparent border-none p-0 rounded-md focus:outline-none ${activeSection === item.id ? 'opacity-100 scale-105' : 'opacity-60'} transition-all duration-150`}
-                  style={{
-                    background: 'none',
-                    boxShadow: 'none',
-                    border: 'none',
-                    padding: 0,
-                    margin: '0 auto',
-                    touchAction: 'manipulation'
-                  }}
-                >
-                  <Image 
-                    src={item.icon} 
-                    alt={item.label} 
-                    width={180} 
-                    height={48} 
-                    className="w-[180px] h-[48px] md:w-[260px] md:h-[70px] lg:w-[320px] lg:h-[90px]"
-                  />
-                </button>
-              ))}
+              {navigationItems.map((item) => {
+                const ButtonComponent = item.component;
+                return (
+                  <div
+                    key={item.id}
+                    className={`${activeSection === item.id ? 'opacity-100 scale-105' : 'opacity-60'} transition-all duration-150`}
+                  >
+                    <ButtonComponent
+                      onClick={() => showSection(item.id)}
+                      isActive={activeSection === item.id}
+                      className="w-full max-w-[200px]"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </nav>
 
@@ -194,15 +192,10 @@ export default function AboutPage() {
                 <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
                 <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <button onClick={() => router.push('/survey')} style={{ background: 'none', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}>
-                    <Image 
-                      src="/take-survey.png" 
-                      alt="Take Survey" 
-                      width={320} 
-                      height={90} 
-                      className="w-[180px] h-[48px] sm:w-[260px] sm:h-[70px] md:w-[320px] md:h-[90px]" 
-                    />
-                  </button>
+                  <TakeSurveyButton
+                    onClick={() => router.push('/survey')}
+                    className="w-[180px] sm:w-[260px] md:w-[320px]"
+                  />
                 </div>
               </div>
             )}
