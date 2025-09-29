@@ -35,24 +35,41 @@ const HeroDesktop: React.FC = () => {
       </div>
 
       {/* Two Column Layout Container */}
-      <div className="relative z-10 flex w-full h-full pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32 gap-8">
-        {/* First Column - Main Content (60% width) */}
-        <div className="w-3/5 flex flex-col items-center justify-center pr-8">
+      <div className="relative z-10 flex w-full h-full pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32 gap-2">
+        {/* First Column - Main Content (65% width) */}
+        <div className="w-2/3 flex flex-col items-center justify-center">
           {/* Title and Subtitle Section */}
-          <div className="w-full max-w-3xl px-4 flex flex-col items-center">
-            {/* Main Title SVG */}
-            <div className="w-full flex justify-center -mb-1 sm:-mb-2 md:-mb-3">
-              <div className="relative w-full max-w-4xl" style={{ height: '160px', minHeight: '160px', maxHeight: '200px' }}>
-                <Image
-                  src="/text.svg"
-                  alt="FORGE YOUR ULTIMATE GAMING LEGACY"
-                  fill
+          <div className="w-full flex flex-col items-center">
+            {/* Main Title Text */}
+            <div className="w-full flex justify-center mb-4 sm:mb-6">
+              <div className="font-press-start text-left leading-tight">
+                <div 
                   style={{
-                    objectFit: 'contain',
-                    objectPosition: 'center',
+                    fontSize: 'clamp(24px, 5vw, 58px)',
+                    lineHeight: '1.1',
+                    color: '#fff',
+                    textShadow: '3px 3px 0px #1a1a1a, -3px -3px 0px #1a1a1a, 3px -3px 0px #1a1a1a, -3px 3px 0px #1a1a1a, 2px 2px 0px #1a1a1a, -2px -2px 0px #1a1a1a, 2px -2px 0px #1a1a1a, -2px 2px 0px #1a1a1a, 1px 1px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.4em',
+                    wordSpacing: '-0.6em',
                   }}
-                  priority
-                />
+                >
+                  FORGE YOUR 
+                </div>
+                <div 
+                  style={{
+                    fontSize: 'clamp(24px, 5vw, 58px)',
+                    lineHeight: '1.1',
+                    color: '#FFD700',
+                    textShadow: '3px 3px 0px #1a1a1a, -3px -3px 0px #1a1a1a, 3px -3px 0px #1a1a1a, -3px 3px 0px #1a1a1a, 2px 2px 0px #1a1a1a, -2px -2px 0px #1a1a1a, 2px -2px 0px #1a1a1a, -2px 2px 0px #1a1a1a, 1px 1px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    wordSpacing: '-0.6em',
+                  }}
+                >
+                  GAMING LEGACY
+                </div>
               </div>
             </div>
             
@@ -60,27 +77,24 @@ const HeroDesktop: React.FC = () => {
             <div className="w-full flex flex-col items-center">
               {/* Subtitle */}
               <div 
-                className="text-center mb-6 sm:mb-8 w-full px-2 sm:px-4"
+                className="text-left mb-6 sm:mb-8 w-full px-2 sm:px-4"
                 style={{
                   fontFamily: 'var(--font-geist-mono)',
                   fontStyle: 'normal',
                   fontWeight: 400,
-                  fontSize: 'clamp(11px, 2.5vw, 16px)',
+                  fontSize: 'clamp(17px, 3vw, 20px)',
                   lineHeight: '125%',
                   textTransform: 'uppercase',
                   color: '#000',
-                  whiteSpace: 'nowrap',
                   width: '100%',
                   maxWidth: '100%',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
                 }}
               >
-                Craft decentralized identities, own achievements, build a verifiable profile.
+                Craft decentralized identities, own achievements, build a <br />verifiable profile.
               </div>
               
               {/* About Us and Take Survey Buttons */}
-              <div className="buttons-wrapper mt-4 sm:mt-6 mb-4 sm:mb-6">
+              <div className="flex flex-row gap-4 sm:gap-6 mt-4 sm:mt-6 mb-4 sm:mb-6 justify-start w-full ml-4">
                 <div className="button-container-small">
                   <AboutUsButton
                     onClick={() => router.push('/about')}
@@ -97,56 +111,26 @@ const HeroDesktop: React.FC = () => {
             </div>
           </div>
 
-          {/* Platform Icons Row */}
-          <div className="w-full flex justify-center mt-4 sm:mt-6 px-2">
-            <div className="flex flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center items-center w-full max-w-sm">
-              <span className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transition group">
-                <Image 
-                  src="/steam.svg" 
-                  alt="Steam" 
-                  width={120} 
-                  height={120} 
-                  className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" 
-                />
-              </span>
-              <span className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transition group">
-                <Image 
-                  src="/ps.svg" 
-                  alt="PlayStation" 
-                  width={120} 
-                  height={120} 
-                  className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" 
-                />
-              </span>
-              <span className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transition group">
-                <Image 
-                  src="/xbox.svg" 
-                  alt="Xbox" 
-                  width={120} 
-                  height={120} 
-                  className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" 
-                />
-              </span>
-            </div>
-          </div>
+         
         </div>
 
-        {/* Second Column - Launch Soon Image (40% width) */}
-        <div className="w-2/5 flex items-end justify-center pl-4 pb-4">
+        {/* Second Column - Launch Soon Image (35% width) */}
+        <div className="w-1/3 flex items-end justify-center  pb-0">
           <div className="relative w-full flex items-end justify-center">
             <Image
               src="/launch_soon.svg"
               alt="Launch Soon"
-              width={1000}
-              height={1000}
-              className="w-full h-auto max-w-none object-contain scale-110"
+              width={1800}
+              height={2000}
+              className="w-full h-auto max-w-none object-contain"
               priority
               style={{
                 objectFit: 'contain',
                 objectPosition: 'bottom center',
-                minHeight: '500px',
-                transform: 'scale(1.2)',
+                minHeight: '900px',
+                transform: 'scale(2.2)',
                 transformOrigin: 'bottom center',
+                marginBottom: '-16px',
               }}
             />
           </div>
