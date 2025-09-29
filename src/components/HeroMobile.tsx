@@ -106,20 +106,20 @@ const HeroMobile: React.FC = () => {
           </div>
         </div>
 
-        {/* Take Survey Button Centered */}
-        <div className="flex flex-col items-center justify-center w-full mt-0 mb-4">
-          <TakeSurveyButton
-            onClick={() => router.push('/survey')}
-            className="w-full max-w-xl mx-auto"
-          />
-        </div>
-
-        {/* About Us Button */}
-        <div className="flex flex-col items-center justify-center w-full mb-4">
-          <AboutUsButton
-            onClick={() => router.push('/about')}
-            className="w-full max-w-sm mx-auto"
-          />
+        {/* Buttons Container */}
+        <div className="buttons-wrapper mt-8 mb-8 py-4">
+          <div className="button-container-small">
+            <AboutUsButton
+              onClick={() => router.push('/about')}
+              className="w-full"
+            />
+          </div>
+          <div className="button-container">
+            <TakeSurveyButton
+              onClick={() => router.push('/survey')}
+              className="w-full"
+            />
+          </div>
         </div>
 
         {/* Platform Icons Row */}

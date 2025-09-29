@@ -12,7 +12,7 @@ const TakeSurveyButton: React.FC<TakeSurveyButtonProps> = ({ onClick, className 
       className={`cursor-pointer ${className}`}
       style={{ background: 'transparent', border: 'none', padding: 0 }}
     >
-      <svg width="280" height="48" viewBox="0 0 280 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="block">
+      <svg width="280" height="48" viewBox="0 0 280 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-[280px]">
         <rect x="6.5" width="267" height="48" rx="24" fill="#D0941C"/>
         <rect x="12.5" y="40" width="255" height="4" fill="#B37B0D"/>
         <rect x="8.5" y="36" width="4" height="4" fill="#B37B0D"/>
@@ -44,7 +44,7 @@ const TakeSurveyButton: React.FC<TakeSurveyButtonProps> = ({ onClick, className 
           fontSize="12"
           fontFamily="'Press Start 2P', 'Courier New', monospace"
         >
-          TAKE SURVEY
+          TAKE THE SURVEY
         </text>
       </svg>
     </button>

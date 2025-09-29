@@ -78,16 +78,20 @@ const HeroDesktop: React.FC = () => {
                 Craft decentralized identities, own achievements, build a verifiable profile.
               </div>
               
-              {/* Take Survey and About Us Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mt-6 sm:mt-8 mb-6 sm:mb-8">
-                <TakeSurveyButton
-                  onClick={() => router.push('/survey')}
-                  className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-xs"
-                />
-                <AboutUsButton
-                  onClick={() => router.push('/about')}
-                  className="w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px]"
-                />
+              {/* About Us and Take Survey Buttons */}
+              <div className="buttons-wrapper mt-6 sm:mt-8 mb-6 sm:mb-8">
+                <div className="button-container-small">
+                  <AboutUsButton
+                    onClick={() => router.push('/about')}
+                    className="w-full"
+                  />
+                </div>
+                <div className="button-container">
+                  <TakeSurveyButton
+                    onClick={() => router.push('/survey')}
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
           </div>
