@@ -81,7 +81,7 @@ export default function AboutPage() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="absolute top-0 right-0 z-30 p-2 sm:p-4 md:hidden">
+      <div className="absolute top-0 right-0 z-30 p-2 sm:p-4 md:hidden" style={{ top: '8px', right: '8px' }}>
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           style={{ background: 'none', border: 'none', padding: 0, boxShadow: 'none', borderRadius: 0 }}
@@ -95,7 +95,7 @@ export default function AboutPage() {
       </div>
 
       {/* Sidebar Navigation */}
-      <div className={`fixed inset-y-0 left-0 z-20 w-72 transform transition-transform duration-300 ease-in-out ${
+      <div className={`fixed inset-y-0 left-0 z-20 w-64 sm:w-72 transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } md:translate-x-0`}
       style={{
@@ -103,7 +103,7 @@ export default function AboutPage() {
         borderRight: '6px solid #FFD700',
         boxShadow: '8px 0 0 #000, 12px 0 0 #FFD700, 16px 0 0 #000'
       }}>
-        <div className="p-6 h-full flex flex-col">
+        <div className="p-6 h-full flex flex-col" style={{ paddingTop: '80px' }}>
           {/* Sidebar Header Removed */}
 
           {/* Navigation Items with PNGs and centered logo */}
@@ -140,61 +140,61 @@ export default function AboutPage() {
       )}
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-2 py-4 md:ml-72 w-full" style={{ overflow: 'hidden', height: '100vh' }}>
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-1 sm:px-2 py-4 md:ml-72 w-full" style={{ overflow: 'hidden', height: '100vh', paddingTop: '60px', paddingBottom: '20px' }}>
         <div className="w-full max-w-4xl mx-auto h-full flex items-center justify-center">
           {/* Content Card: Only show active section */}
-          <div 
-            className="bg-white border-4 border-black rounded-lg p-4 sm:p-8 shadow-2xl w-full max-w-full overflow-y-auto flex flex-col justify-start items-center"
+          <div
+            className="bg-white border-2 sm:border-4 border-black rounded-lg p-2 sm:p-4 md:p-8 shadow-2xl w-full max-w-full overflow-y-auto flex flex-col justify-start items-center"
             style={{
-              boxShadow: '0 0 0 3px #000, 0 0 0 7px #fff, 0 0 0 11px #000',
-              borderRadius: '1rem',
-              minHeight: '60vh',
-              maxHeight: 'calc(100vh - 32px)',
+              boxShadow: '0 0 0 2px #000, 0 0 0 4px #fff, 0 0 0 6px #000',
+              borderRadius: '0.5rem',
+              minHeight: '65vh',
+              maxHeight: 'calc(100vh - 100px)',
               width: '100%',
-              paddingTop: '24px',
-              paddingBottom: '24px'
+              paddingTop: '12px',
+              paddingBottom: '12px'
             }}
           >
             {activeSection === 'mission' && (
               <div className="w-full text-center md:text-left">
-                <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR MISSION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We&rsquo;re building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We&rsquo;re not just another identity provider; we&rsquo;re the infrastructure layer that will power the next generation of gaming.</p>
+                <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR MISSION</h2>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We&rsquo;re building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We&rsquo;re not just another identity provider; we&rsquo;re the infrastructure layer that will power the next generation of gaming.</p>
               </div>
             )}
             {activeSection === 'vision' && (
               <div className="w-full text-center md:text-left">
-                <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR VISION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We&rsquo;re building the decentralized identity infrastructure that becomes the industry standard.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Imagine a future where every major game uses OriginForge for secure authentication, and every serious gamer has their verified profile. <strong>One platform connecting the entire gaming ecosystem through trust and verifiable identity.</strong></p>
+                <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR VISION</h2>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We&rsquo;re building the decentralized identity infrastructure that becomes the industry standard.</p>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Imagine a future where every major game uses OriginForge for secure authentication, and every serious gamer has their verified profile. <strong>One platform connecting the entire gaming ecosystem through trust and verifiable identity.</strong></p>
               </div>
             )}
             {activeSection === 'features' && (
               <div className="w-full text-center md:text-left">
-                <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KEY FEATURES</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">OAuth for Games</h3><p className="text-gray-700 text-xs md:text-sm">DID-based authentication with SDKs for Unity, Unreal, and web games. <strong>Integrate in minutes, secure forever.</strong></p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Fraud Prevention API</h3><p className="text-gray-700 text-xs md:text-sm">AI-powered cheater detection, ban evasion tracking, and reputation scoring. <strong>Protect your players automatically.</strong></p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Premium Profiles</h3><p className="text-gray-700 text-xs md:text-sm">Verified gaming identity for tournaments and professional networking. <strong>Your credibility, proven.</strong></p></div>
-                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-4"><h3 className="font-press-start text-base md:text-lg text-yellow-800 mb-2">Analytics Dashboard</h3><p className="text-gray-700 text-xs md:text-sm">Player insights, retention metrics, and behavioral analytics for developers. <strong>Data that drives decisions.</strong></p></div>
+                <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KEY FEATURES</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-2 sm:p-4"><h3 className="font-press-start text-xs sm:text-sm md:text-base lg:text-lg text-yellow-800 mb-1 sm:mb-2">OAuth for Games</h3><p className="text-gray-700 text-xs md:text-sm">DID-based authentication with SDKs for Unity, Unreal, and web games. <strong>Integrate in minutes, secure forever.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-2 sm:p-4"><h3 className="font-press-start text-xs sm:text-sm md:text-base lg:text-lg text-yellow-800 mb-1 sm:mb-2">Fraud Prevention API</h3><p className="text-gray-700 text-xs md:text-sm">AI-powered cheater detection, ban evasion tracking, and reputation scoring. <strong>Protect your players automatically.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-2 sm:p-4"><h3 className="font-press-start text-xs sm:text-sm md:text-base lg:text-lg text-yellow-800 mb-1 sm:mb-2">Premium Profiles</h3><p className="text-gray-700 text-xs md:text-sm">Verified gaming identity for tournaments and professional networking. <strong>Your credibility, proven.</strong></p></div>
+                  <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-2 sm:p-4"><h3 className="font-press-start text-xs sm:text-sm md:text-base lg:text-lg text-yellow-800 mb-1 sm:mb-2">Analytics Dashboard</h3><p className="text-gray-700 text-xs md:text-sm">Player insights, retention metrics, and behavioral analytics for developers. <strong>Data that drives decisions.</strong></p></div>
                 </div>
               </div>
             )}
             {activeSection === 'technology' && (
               <div className="w-full text-center md:text-left">
-                <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>TECHNOLOGY</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-4">Built on Polkadot substrate with Web3 Foundation backing, we deliver <strong>enterprise-grade infrastructure</strong> that scales. Our AI-enhanced fraud detection uses machine learning for reputation scoring, device fingerprinting, and cross-game correlation analysis to eliminate cheaters and protect legitimate players.</p>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">Our architecture: Event ingestion APIs → Message queue → ML processing → Real-time risk assessment. <strong>99.9% uptime SLA with sub-100ms authentication response times.</strong> Built for the demanding performance requirements of modern gaming.</p>
+                <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>TECHNOLOGY</h2>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">Built on Polkadot substrate with Web3 Foundation backing, we deliver <strong>enterprise-grade infrastructure</strong> that scales. Our AI-enhanced fraud detection uses machine learning for reputation scoring, device fingerprinting, and cross-game correlation analysis to eliminate cheaters and protect legitimate players.</p>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Our architecture: Event ingestion APIs → Message queue → ML processing → Real-time risk assessment. <strong>99.9% uptime SLA with sub-100ms authentication response times.</strong> Built for the demanding performance requirements of modern gaming.</p>
               </div>
             )}
             {activeSection === 'join' && (
               <div className="w-full text-center">
-                <h2 className="font-press-start text-xl sm:text-2xl md:text-3xl text-yellow-700 mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
+                <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-4 sm:mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <TakeSurveyButton
                     onClick={() => router.push('/survey')}
-                    className="w-[180px] sm:w-[260px] md:w-[320px]"
+                    className="w-[160px] sm:w-[220px] md:w-[280px] lg:w-[320px]"
                   />
                 </div>
               </div>

@@ -307,7 +307,7 @@ const SurveySection: React.FC = () => {
   };
 
   return (
-  <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '140px'}}>
+  <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '140px', paddingTop: '80px'}}>
     {/* Logo in top-left corner */}
     <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
        <button
@@ -318,7 +318,7 @@ const SurveySection: React.FC = () => {
          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
        </button>
     </div>
-  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 140px)', /* keep content above grass */ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 220px)', /* keep content above grass and logo */ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '60px' }}>
       <form
         className="p-0 w-full flex flex-col gap-4 text-[0.85rem] sm:text-[1rem]"
         style={{
@@ -328,7 +328,7 @@ const SurveySection: React.FC = () => {
           backgroundRepeat: 'no-repeat',
           borderRadius: '1rem',
           minHeight: '420px',
-          maxHeight: 'calc(100vh - 180px)',
+          maxHeight: 'calc(100vh - 260px)',
           /* removed overflowY: 'auto' */
           justifyContent: 'center',
           paddingBottom: '24px',
@@ -434,7 +434,7 @@ const SurveySection: React.FC = () => {
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
               <div className="mb-6 text-center font-press-start text-yellow-700 text-base sm:text-lg">Ready to level up your social XP? Our Discord is where the real loot drops!</div>
-              <button type="button" className="pixel-button bg-blue-600 text-white px-8 py-4 rounded shadow text-lg font-press-start" onClick={() => window.open('https://discord.gg/yGpbx2hW', '_blank')}>Join Discord</button>
+              <button type="button" className="pixel-button bg-blue-600 text-white px-8 py-4 rounded shadow text-lg font-press-start" onClick={() => window.open('https://discord.gg/rVHBqhJvpX', '_blank')}>Join Discord</button>
             </div>
           )}
         </div>
@@ -450,7 +450,7 @@ const SurveySection: React.FC = () => {
                 className="w-full max-w-xs"
               />
               <JoinDiscordButton
-                onClick={() => window.open('https://discord.gg/yGpbx2hW', '_blank')}
+                onClick={() => window.open('https://discord.gg/rVHBqhJvpX', '_blank')}
                 className="w-full max-w-xs"
               />
             </div>
