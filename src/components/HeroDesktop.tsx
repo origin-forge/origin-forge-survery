@@ -35,14 +35,14 @@ const HeroDesktop: React.FC = () => {
       </div>
 
       {/* Two Column Layout Container */}
-      <div className="relative z-10 flex w-full h-full pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32 gap-2">
-        {/* First Column - Main Content (65% width) */}
-        <div className="w-2/3 flex flex-col items-center justify-center">
+      <div className="relative z-10 flex w-full h-full pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 gap-8">
+        {/* First Column - Main Content (70% width) */}
+        <div className="w-[70%] flex flex-col justify-center pl-8 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24 pr-4">
           {/* Title and Subtitle Section */}
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col items-start max-w-3xl">
             {/* Main Title Text */}
-            <div className="w-full flex justify-center mb-4 sm:mb-6">
-              <div className="font-press-start text-left leading-tight">
+            <div className="w-full mb-4 sm:mb-6">
+              <div className="font-press-start leading-tight">
                 <div 
                   style={{
                     fontSize: 'clamp(24px, 5vw, 58px)',
@@ -63,9 +63,10 @@ const HeroDesktop: React.FC = () => {
                     lineHeight: '1.1',
                     color: '#FFD700',
                     textShadow: '3px 3px 0px #1a1a1a, -3px -3px 0px #1a1a1a, 3px -3px 0px #1a1a1a, -3px 3px 0px #1a1a1a, 2px 2px 0px #1a1a1a, -2px -2px 0px #1a1a1a, 2px -2px 0px #1a1a1a, -2px 2px 0px #1a1a1a, 1px 1px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    wordSpacing: '-0.6em',
+                    wordSpacing: '-0.3em',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   GAMING LEGACY
@@ -74,10 +75,10 @@ const HeroDesktop: React.FC = () => {
             </div>
             
             {/* Subtitle and Buttons Section */}
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-start">
               {/* Subtitle */}
               <div 
-                className="text-left mb-6 sm:mb-8 w-full px-2 sm:px-4"
+                className="mb-6 sm:mb-8 w-full"
                 style={{
                   fontFamily: 'var(--font-geist-mono)',
                   fontStyle: 'normal',
@@ -86,15 +87,15 @@ const HeroDesktop: React.FC = () => {
                   lineHeight: '125%',
                   textTransform: 'uppercase',
                   color: '#000',
-                  width: '100%',
-                  maxWidth: '100%',
+                  maxWidth: '800px',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 Craft decentralized identities, own achievements, build a <br />verifiable profile.
               </div>
               
               {/* About Us and Take Survey Buttons */}
-              <div className="flex flex-row gap-4 sm:gap-6 mt-4 sm:mt-6 mb-4 sm:mb-6 justify-start w-full ml-4">
+              <div className="flex flex-row gap-4 sm:gap-6 mt-4 sm:mt-6 mb-4 sm:mb-6">
                 <div className="button-container-small">
                   <AboutUsButton
                     onClick={() => router.push('/about')}
@@ -114,8 +115,8 @@ const HeroDesktop: React.FC = () => {
          
         </div>
 
-        {/* Second Column - Launch Soon Image (35% width) */}
-        <div className="w-1/3 flex items-end justify-center pb-0">
+        {/* Second Column - Launch Soon Image (30% width) */}
+        <div className="w-[30%] flex items-end justify-center pb-0 pr-8 sm:pr-12 md:pr-16 lg:pr-20 xl:pr-24">
           <div className="relative w-full flex items-end justify-center">
             <Image
               src="/launch_soon.svg"
@@ -130,7 +131,7 @@ const HeroDesktop: React.FC = () => {
                 minHeight: '900px',
                 transform: 'scale(2.2)',
                 transformOrigin: 'bottom center',
-                marginBottom: '-16px',
+                marginBottom: '-10px',
               }}
             />
           </div>
@@ -142,8 +143,17 @@ const HeroDesktop: React.FC = () => {
           /* Default styles already in inline style */
         }
         
-        /* Large screens (1440px and up) */
-        @media (min-width: 1440px) {
+        /* 14-inch Mac specific styles (1440px) */
+        @media (min-width: 1440px) and (max-width: 1600px) {
+          .coming-soon-image {
+            transform: scale(2.3) !important;
+            min-height: 950px !important;
+            margin-bottom: -20px !important;
+          }
+        }
+        
+        /* Large screens (1600px and up) */
+        @media (min-width: 1600px) {
           .coming-soon-image {
             transform: scale(2.5) !important;
             min-height: 1000px !important;
