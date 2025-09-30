@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import TakeSurveyButton from './TakeSurveyButton';
@@ -7,6 +7,12 @@ import AboutUsButton from './AboutUsButton';
 const HeroMobile: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleTakeSurvey = () => {
+    setIsLoading(true);
+    router.push('/survey');
+  };
 
 
   return (
@@ -127,8 +133,10 @@ const HeroMobile: React.FC = () => {
           </div>
           <div className="button-container">
             <TakeSurveyButton
-              onClick={() => router.push('/survey')}
+              onClick={handleTakeSurvey}
               className="w-full"
+              isLoading={isLoading}
+              disabled={isLoading}
             />
           </div>
         </div>

@@ -3,13 +3,16 @@ import React from 'react';
 interface TakeSurveyButtonProps {
   onClick: () => void;
   className?: string;
+  isLoading?: boolean;
+  disabled?: boolean;
 }
 
-const TakeSurveyButton: React.FC<TakeSurveyButtonProps> = ({ onClick, className = "" }) => {
+const TakeSurveyButton: React.FC<TakeSurveyButtonProps> = ({ onClick, className = "", isLoading = false, disabled = false }) => {
   return (
     <button
       onClick={onClick}
-      className={`cursor-pointer ${className}`}
+      disabled={disabled || isLoading}
+      className={`cursor-pointer ${disabled || isLoading ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
       style={{ background: 'transparent', border: 'none', padding: 0 }}
     >
       <svg width="280" height="48" viewBox="0 0 280 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-[280px]">
@@ -44,7 +47,7 @@ const TakeSurveyButton: React.FC<TakeSurveyButtonProps> = ({ onClick, className 
           fontSize="15"
           fontFamily="'Press Start 2P', 'Courier New', monospace"
         >
-          TAKE THE SURVEY
+          {isLoading ? "LOADING..." : "TAKE THE SURVEY"}
         </text>
       </svg>
     </button>

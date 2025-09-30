@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import TakeSurveyButton from './TakeSurveyButton';
@@ -6,6 +6,12 @@ import AboutUsButton from './AboutUsButton';
 
 const HeroDesktop: React.FC = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleTakeSurvey = () => {
+    setIsLoading(true);
+    router.push('/survey');
+  };
 
 
   return (
@@ -104,8 +110,10 @@ const HeroDesktop: React.FC = () => {
                 </div>
                 <div className="button-container">
                   <TakeSurveyButton
-                    onClick={() => router.push('/survey')}
+                    onClick={handleTakeSurvey}
                     className="w-full"
+                    isLoading={isLoading}
+                    disabled={isLoading}
                   />
                 </div>
               </div>
