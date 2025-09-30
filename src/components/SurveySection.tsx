@@ -374,7 +374,7 @@ const SurveySection: React.FC = () => {
                       style={{ display: 'none' }}
                     />
                     <span style={{ width: '32px', height: '28px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-                      {checked ? <RadioOn /> : <RadioOff />}
+                      {checked ? <CheckboxOn /> : <CheckboxOff />}
                     </span>
                     {opt}
                   </label>
@@ -397,7 +397,7 @@ const SurveySection: React.FC = () => {
                       style={{ display: 'none' }}
                     />
                     <span style={{ width: '32px', height: '28px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-                      {checked ? <CheckboxOn /> : <CheckboxOff />}
+                      {checked ? <RadioOn /> : <RadioOff />}
                     </span>
                     {opt}
                   </label>
