@@ -131,10 +131,10 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Overlay for mobile */}
+      {/* Overlay for mobile - transparent clickable area */}
       {isSidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+        <div
+          className="fixed inset-0 bg-transparent z-10 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
