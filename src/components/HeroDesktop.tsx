@@ -148,7 +148,7 @@ const HeroDesktop: React.FC = () => {
           .coming-soon-image {
             transform: scale(2.3) !important;
             min-height: 950px !important;
-            margin-bottom: -20px !important;
+            margin-bottom: -10px !important;
           }
         }
         
