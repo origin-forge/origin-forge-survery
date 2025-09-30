@@ -156,21 +156,21 @@ export default function AboutPage() {
             }}
           >
             {activeSection === 'mission' && (
-              <div className="w-full text-center md:text-left">
+              <div className="w-full text-center md:text-left description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR MISSION</h2>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">OriginForge solves a massive $2B+ industry problem: game developers waste $50K-200K building authentication systems while players deal with fragmented gaming identities. We&rsquo;re building the first <strong>gaming-native DID platform</strong> that gives developers instant secure authentication and gives gamers one unified identity across all platforms.</p>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Our dual B2B/B2C approach creates powerful network effects - <strong>more games means better security for everyone</strong>. We&rsquo;re not just another identity provider; we&rsquo;re the infrastructure layer that will power the next generation of gaming.</p>
               </div>
             )}
             {activeSection === 'vision' && (
-              <div className="w-full text-center md:text-left">
+              <div className="w-full text-center md:text-left description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>OUR VISION</h2>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">By 2027, we envision OriginForge as the <strong>LinkedIn for gamers and Stripe for game authentication</strong>. Our roadmap: 500+ games using our platform, millions of verified players, and $8M+ ARR. We&rsquo;re building the decentralized identity infrastructure that becomes the industry standard.</p>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Imagine a future where every major game uses OriginForge for secure authentication, and every serious gamer has their verified profile. <strong>One platform connecting the entire gaming ecosystem through trust and verifiable identity.</strong></p>
               </div>
             )}
             {activeSection === 'features' && (
-              <div className="w-full text-center md:text-left">
+              <div className="w-full text-center md:text-left description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KEY FEATURES</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
                   <div className="bg-yellow-100 border-2 border-yellow-300 rounded-lg p-2 sm:p-4"><h3 className="font-press-start text-xs sm:text-sm md:text-base lg:text-lg text-yellow-800 mb-1 sm:mb-2">OAuth for Games</h3><p className="text-gray-700 text-xs md:text-sm">DID-based authentication with SDKs for Unity, Unreal, and web games. <strong>Integrate in minutes, secure forever.</strong></p></div>
@@ -181,14 +181,14 @@ export default function AboutPage() {
               </div>
             )}
             {activeSection === 'technology' && (
-              <div className="w-full text-center md:text-left">
+              <div className="w-full text-center md:text-left description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-3 sm:mb-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>TECHNOLOGY</h2>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">Built on Polkadot substrate with Web3 Foundation backing, we deliver <strong>enterprise-grade infrastructure</strong> that scales. Our AI-enhanced fraud detection uses machine learning for reputation scoring, device fingerprinting, and cross-game correlation analysis to eliminate cheaters and protect legitimate players.</p>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">Our architecture: Event ingestion APIs → Message queue → ML processing → Real-time risk assessment. <strong>99.9% uptime SLA with sub-100ms authentication response times.</strong> Built for the demanding performance requirements of modern gaming.</p>
               </div>
             )}
             {activeSection === 'join' && (
-              <div className="w-full text-center">
+              <div className="w-full text-center description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-4 sm:mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
                 <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -202,6 +202,23 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Mobile-only horizontal padding for description sections */}
+      <style jsx>{`
+        @media (max-width: 767px) {
+          .description-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .description-section {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
