@@ -131,7 +131,7 @@ const HeroDesktop: React.FC = () => {
                 minHeight: '900px',
                 transform: 'scale(2.2)',
                 transformOrigin: 'bottom center',
-                marginBottom: '-10px',
+                marginBottom: '35px',
               }}
             />
           </div>
