@@ -62,6 +62,20 @@
   }
 }
 
+/* Fixed content to prevent scroll movement */
+.fixed-content {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: auto;
+  position: relative;
+}
+
+/* Prevent scroll bounce and movement */
+.no-scroll-movement {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
 /* Figma/Frame style for hero buttons */
 .hero-btn {
   display: flex;
@@ -105,8 +119,10 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-color: #000 !important;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }
 /* Pixelated button style for Press Start 2P theme */
 .btn, button, .pixel-btn {

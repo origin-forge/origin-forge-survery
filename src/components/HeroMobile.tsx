@@ -12,19 +12,21 @@ const HeroMobile: React.FC = () => {
   return (
   <section 
     id="hero" 
-    className="relative w-full flex flex-col items-center justify-start overflow-auto"
+    className="relative w-full flex flex-col items-center justify-start"
     style={{
       minHeight: '100dvh',
+      height: '100dvh',
       backgroundImage: 'url(/bg.svg)',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      backgroundAttachment: 'local',
-      backgroundColor: '#000',
+      backgroundAttachment: 'scroll',
+      backgroundColor: '#E5D5A3',
+      overflow: 'hidden',
     }}
   >
       {/* Logo in top-left corner */}
-      <div className="absolute top-0 left-0 z-20 p-2 sm:p-3">
+      <div className="fixed top-0 left-0 z-20 p-2 sm:p-3">
         <Image
           src="/logo.svg"
           alt="OriginForge Logo"
@@ -35,57 +37,60 @@ const HeroMobile: React.FC = () => {
         />
       </div>
 
-  <div className="relative z-10 flex flex-col w-full min-h-full pt-6 pb-2 px-2 sm:px-4 md:px-8 lg:px-12">
+  <div className="relative z-10 flex flex-col w-full h-full pt-6 pb-0 px-1 sm:px-2 md:px-4 lg:px-6 overflow-hidden">
         {/* Title and subtitle */}
-        <div className="w-full max-w-4xl mt-16 mb-2">
+        <div className="w-full max-w-4xl mt-16 mb-2 fixed-content">
           <div
             ref={textRef}
             className="font-press-start flex flex-col items-center w-full select-none"
           >
             <div 
-              className="w-full mx-auto text-center px-4"
+              className="w-full mx-auto text-center px-1"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: '20px',
+                gap: '12px',
                 flex: 'none',
                 order: 0,
                 alignSelf: 'center',
                 flexGrow: 0
               }}
             >
-              <span
-                className="whitespace-nowrap text-white text-[4.8vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.8vw] xl:text-[2.5vw] font-bold text-center tracking-[0.04em] leading-[1.1]"
+              <div
                 style={{
-                  marginRight: '0',
-                  marginBottom: '4px',
-                  WebkitTextStroke: '1px #000',
-                  textShadow: '0 1px 2px #000',
+                  fontSize: 'clamp(22px, 6vw, 42px)',
+                  lineHeight: '1.1',
                   color: '#fff',
-                  WebkitTextFillColor: '#fff'
+                  textShadow: '2px 2px 0px #1a1a1a, -2px -2px 0px #1a1a1a, 2px -2px 0px #1a1a1a, -2px 2px 0px #1a1a1a, 1px 1px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a',
+                  letterSpacing: '0.02em',
+                  textTransform: 'uppercase',
+                  fontFamily: 'var(--font-press-start)',
+                  fontWeight: 'normal',
+                  textAlign: 'center',
+                  marginBottom: '10px',
+                  wordSpacing: '-0.6em',
                 }}
               >
-                FORGE YOUR ULTIMATE
-              </span>
-              <span
-                className="whitespace-nowrap text-[6vw] sm:text-[4vw] md:text-[3vw] lg:text-[2.2vw] xl:text-[2vw] font-bold text-center tracking-[0.13em] leading-[1.1]"
+                FORGE YOUR
+              </div>
+              <div
                 style={{
-                  WebkitTextStroke: '1px #000',
-                  textShadow: '0 1px 2px #000',
-                  maxWidth: '100vw',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: 'inline-block',
+                  fontSize: 'clamp(22px, 6vw, 42px)',
+                  lineHeight: '1.1',
                   color: '#FFD700',
-                  WebkitTextFillColor: '#FFD700',
-                  background: 'transparent',
-                  border: 'none'
+                  textShadow: '2px 2px 0px #1a1a1a, -2px -2px 0px #1a1a1a, 2px -2px 0px #1a1a1a, -2px 2px 0px #1a1a1a, 1px 1px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a',
+                  letterSpacing: '0.02em',
+                  textTransform: 'uppercase',
+                  fontFamily: 'var(--font-press-start)',
+                  fontWeight: 'normal',
+                  textAlign: 'center',
+                  wordSpacing: '-0.6em',
                 }}
               >
                 GAMING LEGACY
-              </span>
+              </div>
             </div>
             <div
               style={{
@@ -113,7 +118,7 @@ const HeroMobile: React.FC = () => {
         </div>
 
         {/* Buttons Container */}
-        <div className="buttons-wrapper mt-4 mb-4 py-2">
+        <div className="buttons-wrapper mt-4 mb-4 py-2 fixed-content">
           <div className="button-container-small">
             <AboutUsButton
               onClick={() => router.push('/about')}
@@ -128,24 +133,24 @@ const HeroMobile: React.FC = () => {
           </div>
         </div>
 
-        {/* Platform Icons Row */}
-        <div className="w-full flex justify-center mb-2">
-          <div className="flex flex-row flex-wrap gap-2 justify-center items-center w-full max-w-xs">
-            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
-              <Image src="/steam.svg" alt="Steam" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-            </span>
-            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
-              <Image src="/ps.svg" alt="PlayStation" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-            </span>
-            <span className="inline-flex items-center justify-center w-12 h-12 transition group">
-              <Image src="/xbox.svg" alt="Xbox" width={48} height={48} className="w-full h-auto transition platform-icon group-hover:platform-icon-hover" />
-            </span>
-          </div>
-        </div>
-
         {/* Launch Soon Signboard */}
-        <div className="w-full flex justify-center mt-2 mb-4">
-          <Image src="/launch_soon.svg" alt="Launch Soon" width={400} height={300} className="w-72 sm:w-80 h-auto object-contain" priority />
+        <div className="w-full flex justify-center items-end flex-grow mt-4 fixed-content">
+          <div className="relative">
+            <Image 
+              src="/launch_soon.svg" 
+              alt="Launch Soon" 
+              width={600} 
+              height={500} 
+              className="w-88 sm:w-[400px] md:w-[450px] h-auto object-contain" 
+              priority 
+              style={{
+                transform: 'scale(1.3)',
+                transformOrigin: 'bottom center',
+                marginBottom: '80px',
+                willChange: 'auto'
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
