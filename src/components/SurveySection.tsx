@@ -131,6 +131,7 @@ import NextButton from './NextButton';
 import SubmitButton from './SubmitButton';
 import ShareTwitterButton from './ShareTwitterButton';
 import JoinDiscordButton from './JoinDiscordButton';
+import BackButton from './BackButton';
 
 const questions = [
   {
@@ -230,34 +231,7 @@ const questions = [
     ],
   },
   {
-    label: "What's your biggest frustration with current gaming platforms?",
-    type: "text",
-    name: "frustration",
-    maxLength: 200,
-    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-24"
-  },
-  {
-    label: "What would make you excited to try OriginForge?",
-    type: "text",
-    name: "excited",
-    maxLength: 200,
-    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-24"
-  },
-  {
-    label: "Any other thoughts or questions about unified gaming identity?",
-    type: "text",
-    name: "thoughts",
-    maxLength: 300,
-    className: "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full h-32"
-  },
-  {
-    label: "Want to be notified when OriginForge launches*?",
-    type: "radio",
-    name: "notify",
-    options: ["Yes, keep me updated!", "No thanks"],
-  },
-  {
-    label: "",
+    label: "Enter your email to stay updated on OriginForge*",
     type: "email",
     name: "email",
   },
@@ -292,11 +266,7 @@ const SurveySection: React.FC = () => {
         reputation_system: answers.reputation_system,
         blockchain_familiarity: answers.blockchain_familiarity,
         blockchain_trust: answers.blockchain_trust,
-        frustration: answers.frustration,
-        excited: answers.excited,
-        thoughts: answers.thoughts,
-        notify: answers.notify,
-        // Always include email regardless of notification preference
+        // Always collect email
         email: answers.email,
         submitted_at: new Date().toISOString()
       };
@@ -386,18 +356,18 @@ const SurveySection: React.FC = () => {
       >
         {/* Single Question Card */}
         <div className="flex flex-col gap-3">
-          {/* Only show label if not email or not on share card */}
-          {current.type !== 'email' && (
+          {/* Show label for all non-share card states */}
+          {(!showShareCard || current.type !== 'email') && current.label && (
             <div className="font-press-start text-xs sm:text-sm md:text-base text-yellow-700 mb-3 drop-shadow pt-2 px-2" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)', lineHeight: '1.4' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
             <div className="w-full px-4 sm:px-6">
-              <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{"Email*:"}</div>
               <input
                 type="email"
                 name={current.name}
                 className="p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full"
                 required
+                placeholder="your@email.com"
                 value={answers[current.name] || ''}
                 onChange={handleChange}
               />
@@ -454,19 +424,6 @@ const SurveySection: React.FC = () => {
               })}
             </div>
           )}
-          {current.type === 'text' && (
-            <div className="w-full px-4 sm:px-6">
-              <textarea
-                maxLength={current.maxLength}
-                className={current.className || "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full min-h-24"}
-                placeholder={`${current.maxLength} characters max`}
-                name={current.name}
-                value={answers[current.name] || ''}
-                onChange={handleChange}
-                style={{ resize: 'vertical' }}
-              />
-            </div>
-          )}
           {current.type === 'discord' && (
             <div className="flex flex-col items-center justify-center py-12">
               <div className="mb-6 text-center font-press-start text-yellow-700 text-base sm:text-lg">Ready to level up your social XP? Our Discord is where the real loot drops!</div>
@@ -492,13 +449,17 @@ const SurveySection: React.FC = () => {
             </div>
           ) : (
             <div className="flex justify-between mt-4 pb-4">
-              {step > 0 && (
+              {step === 0 ? (
+                <BackButton
+                  onClick={() => router.push('/')}
+                  className="mx-4"
+                />
+              ) : (
                 <PreviousButton
                   onClick={() => setStep(s => Math.max(0, s-1))}
                   className="mx-4"
                 />
               )}
-              {step === 0 && <div style={{ width: '180px' }}></div>}
               {step === questions.length - 2 ? (
                 <SubmitButton
                   onClick={submitSurvey}
