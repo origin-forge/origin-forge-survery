@@ -437,7 +437,16 @@ const SurveySection: React.FC = () => {
             <div className="flex flex-col gap-4 items-center justify-center mt-8 mb-8">
               <ShareTwitterButton
                 onClick={() => {
-                  const tweetText = encodeURIComponent('🎮 The future of gaming identity is here! @0xoriginforge is building the first DID-based identity platform for gamers - imagine one unified profile across ALL your games. Just took their survey to help shape this revolution! #Web3Gaming #GameDev https://originforge.games');
+                  // Array of 3 different tweet options
+                  const tweetOptions = [
+                    'Just discovered @0xoriginforge at @token2049 Singapore - they\'re building the future of gaming identity with DID-based OAuth! 🎮⛓️\nOne login across ALL games + AI-powered insights + blockchain ownership = gaming finally done right\nWeb3 Foundation backed | Built on @Polkadot 🚀\n#Token2049 #Web3Gaming #DID #GamingInfrastructure #Polkadot #Singapore',
+                    'Met the @0xoriginforge team at @token2049! They\'re solving the fragmented gaming identity problem with decentralized IDs 🔐\nNo more juggling multiple accounts. Your gaming identity, your data, your control 💪\nBuilt by @Polkadot Academy grads with Web3 Foundation grant ✨\n#Token2049 #DecentralizedIdentity #Web3 #GamingWeb3 #BlockchainGaming #Singapore',
+                    '🎮 Gaming + Blockchain done RIGHT!\n@0xoriginforge at @token2049 is building DID OAuth for games - unified login, cross-game reputation, AI insights, all on-chain\nFinally, gamers OWN their identity & achievements 🔥\nBuilt on @Polkadot substrate!\n#Token2049 #DID #Web3Gaming #Polkadot #DecentralizedGaming #Singapore #GameFi'
+                  ];
+
+                  // Randomly select one tweet
+                  const randomTweet = tweetOptions[Math.floor(Math.random() * tweetOptions.length)];
+                  const tweetText = encodeURIComponent(randomTweet);
                   window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
                 }}
                 className="w-full max-w-xs"
