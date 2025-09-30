@@ -4,9 +4,10 @@ interface SubmitButtonProps {
   onClick: () => void;
   disabled?: boolean;
   className?: string;
+  isLoading?: boolean;
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({ onClick, disabled = false, className = "" }) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({ onClick, disabled = false, className = "", isLoading = false }) => {
   return (
     <button
       onClick={onClick}
@@ -46,7 +47,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ onClick, disabled = false, 
           fontSize="15"
           fontFamily="'Press Start 2P', 'Courier New', monospace"
         >
-          SUBMIT
+          {isLoading ? 'SUBMITTING...' : 'SUBMIT'}
         </text>
       </svg>
     </button>

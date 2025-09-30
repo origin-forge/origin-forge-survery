@@ -134,90 +134,100 @@ import JoinDiscordButton from './JoinDiscordButton';
 
 const questions = [
   {
-    label: "Which gaming platforms do you currently use*?",
-    type: "checkbox",
-    name: "platforms",
-    options: [
-      "Steam (PC)", "Xbox (Console/PC)", "PlayStation (PS4/PS5)", "Epic Games Store", "Nintendo Switch", "Mobile Gaming (iOS/Android)", "Other"
-    ],
-    other: true,
-  },
-  {
-    label: "How often do you play games*?",
+    label: "How many gaming platforms/accounts do you actively use?",
     type: "radio",
-    name: "frequency",
-    options: ["Daily", "Several times a week", "Weekly", "Monthly", "Rarely"],
-  },
-  {
-    label: "Do you care about achievements/trophies in games*?",
-    type: "radio",
-    name: "achievements",
+    name: "platform_count",
     options: [
-      "Yes, I'm an achievement hunter",
-      "Somewhat, I like unlocking them",
-      "Not really, but I notice them",
-      "No, I ignore them completely"
+      "1-2 platforms",
+      "3-4 platforms",
+      "5-6 platforms",
+      "7+ platforms",
+      "I don't track this"
     ],
   },
   {
-    label: "Have you ever felt frustrated that your gaming achievements are scattered across different platforms*?",
+    label: "How frustrated are you with creating new accounts for each game you play?",
     type: "radio",
-    name: "frustrated",
-    options: ["Yes, all the time!", "Sometimes", "Rarely", "Never thought about it"],
-  },
-  {
-    label: "Would you like to show off ALL your gaming achievements in one place, regardless of their platform*?",
-    type: "radio",
-    name: "showoff",
-    options: ["Absolutely!", "Maybe, sounds interesting", "Not sure", "No, I'm fine with separate platforms"],
-  },
-  {
-    label: "How interested are you in a platform that combines all your gaming achievements into one blockchain-secured profile*?",
-    type: "radio",
-    name: "interest",
+    name: "account_frustration",
     options: [
-      "Very interested - I'd use this immediately",
-      "Interested - I'd try it out",
-      "Neutral - might check it out",
-      "Not interested",
-      "What's blockchain?"
+      "Very frustrated - I hate it",
+      "Somewhat frustrated - It's annoying but manageable",
+      "Neutral - Doesn't bother me much",
+      "Not frustrated - I'm fine with it",
+      "I enjoy having separate accounts"
     ],
   },
   {
-    label: "How much would you be willing to pay for this service*?",
+    label: "Would you use a single login (like \"Login with Gaming ID\") that works across all your games?",
     type: "radio",
-    name: "price",
-    options: ["$10 - $15", "$16 - $20", "$21 - $25", "$26 - $30"],
-  },
-  {
-    label: "Which feature sounds most appealing to you*?",
-    type: "checkbox",
-    name: "features",
+    name: "single_login",
     options: [
-      "Seeing all achievements in one place",
-      "NFT rare achievements you actually own",
-      "Sharing complete gaming profile with friends",
-      "Using it to log into new games"
+      "Definitely yes - I'd use it immediately",
+      "Probably yes - Sounds convenient",
+      "Maybe - Depends on how it works",
+      "Probably not - I prefer separate accounts",
+      "Definitely not - Privacy/security concerns"
     ],
   },
   {
-    label: "What's your age range*?",
+    label: "How important is it for you to showcase ALL your gaming achievements in one place?",
     type: "radio",
-    name: "age",
-    options: ["Under 18", "18-25", "26-35", "36-45", "46+"],
+    name: "achievement_showcase",
+    options: [
+      "Very important - I'd love to show off my complete gaming history",
+      "Somewhat important - Would be nice to have",
+      "Neutral - Don't really care either way",
+      "Not very important - Achievements don't matter to me",
+      "Not important at all - I don't care about achievements"
+    ],
   },
   {
-    label: "Where are you located*?",
+    label: "Would you pay $5-10/month for a premium gaming profile that aggregates all your achievements and provides AI-powered gaming insights?",
     type: "radio",
-    name: "location",
-    options: ["North America (US/Canada)", "Europe", "Asia-Pacific", "South America", "Africa", "Other"],
-    other: true,
+    name: "premium_willingness",
+    options: [
+      "Yes, I'd definitely pay for this",
+      "Maybe, if the features are compelling enough",
+      "Unsure - Need to see it first",
+      "Probably not - Seems too expensive",
+      "No, I wouldn't pay for this"
+    ],
   },
   {
-    label: "How much do you typically spend on gaming per year*?",
+    label: "Would you use a cross-game reputation system that helps identify and avoid cheaters and toxic players?",
     type: "radio",
-    name: "spend",
-    options: ["Under $100", "$100-300", "$300-600", "$600-1000", "Over $1000"],
+    name: "reputation_system",
+    options: [
+      "Yes, definitely - Cheaters and toxic players ruin my experience",
+      "Yes, sounds helpful for better matchmaking",
+      "Maybe - Depends on how it works",
+      "Probably not - I'm concerned about fairness",
+      "No - I don't think reputation systems work"
+    ],
+  },
+  {
+    label: "Are you familiar with Decentralized Identity (DID) or blockchain-based identity systems?",
+    type: "radio",
+    name: "blockchain_familiarity",
+    options: [
+      "Yes, I understand and use blockchain/DID technology",
+      "Yes, I've heard of it but don't fully understand it",
+      "Somewhat familiar - Know the basics",
+      "Not really - Heard the terms but unclear what they mean",
+      "No, I have no idea what these are"
+    ],
+  },
+  {
+    label: "Would you trust a gaming identity system built on blockchain that gives you ownership and control of your gaming data?",
+    type: "radio",
+    name: "blockchain_trust",
+    options: [
+      "Yes, I prefer blockchain-based systems for data ownership",
+      "Yes, if it's easy to use and secure",
+      "Maybe - Need to understand the benefits better",
+      "Probably not - Blockchain seems complicated",
+      "No - I don't trust blockchain technology"
+    ],
   },
   {
     label: "What's your biggest frustration with current gaming platforms?",
@@ -247,11 +257,12 @@ const questions = [
     options: ["Yes, keep me updated!", "No thanks"],
   },
   {
-    label: "Email*:",
+    label: "",
     type: "email",
     name: "email",
   },
   {
+    label: "",
     type: "discord",
     name: "discord",
   },
@@ -260,14 +271,50 @@ const questions = [
 const SurveySection: React.FC = () => {
   // Helper to submit answers to Supabase
   const [showShareCard, setShowShareCard] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null);
+
+  const showNotification = (type: 'success' | 'error', message: string) => {
+    setNotification({ type, message });
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   const submitSurvey = async () => {
-    // Prepare answers for DB
-    const payload = { ...answers, submitted_at: new Date().toISOString() };
-    const { error } = await supabase.from('survey_responses').insert([payload]);
-    if (error) {
-      alert('Error submitting survey: ' + error.message);
-    } else {
-      setShowShareCard(true);
+    setIsSubmitting(true);
+    try {
+      // Prepare complete payload with all collected answers
+      const payload = {
+        platform_count: answers.platform_count,
+        account_frustration: answers.account_frustration,
+        single_login: answers.single_login,
+        achievement_showcase: answers.achievement_showcase,
+        premium_willingness: answers.premium_willingness,
+        reputation_system: answers.reputation_system,
+        blockchain_familiarity: answers.blockchain_familiarity,
+        blockchain_trust: answers.blockchain_trust,
+        frustration: answers.frustration,
+        excited: answers.excited,
+        thoughts: answers.thoughts,
+        notify: answers.notify,
+        // Always include email regardless of notification preference
+        email: answers.email,
+        submitted_at: new Date().toISOString()
+      };
+
+      console.log('Submitting payload:', payload);
+      const { error } = await supabase.from('new_survey_responses').insert([payload]);
+      if (error) {
+        showNotification('error', `Database error: ${error.message}`);
+        console.error('Supabase error:', error);
+      } else {
+        showNotification('success', 'Survey submitted successfully! Thank you for your feedback.');
+        setShowShareCard(true);
+      }
+    } catch (err) {
+      showNotification('error', 'An unexpected error occurred. Please try again.');
+      console.error('Unexpected error:', err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   const router = useRouter();
@@ -280,34 +327,35 @@ const SurveySection: React.FC = () => {
   const isAnswered = useMemo(() => {
     if (current.type === 'discord') return true;
     const val = answers[current?.name];
-    if (Array.isArray(val)) {
-      return val.length > 0;
-    }
     return val !== undefined && val !== '';
   }, [answers, current]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    let checked = false;
-    if (type === 'checkbox') {
-      checked = (e.target as HTMLInputElement).checked;
-      setAnswers(prev => {
-        const arr = Array.isArray(prev[name]) ? [...prev[name]] : [];
-        if (checked) {
-          arr.push(value);
-        } else {
-          const idx = arr.indexOf(value);
-          if (idx > -1) arr.splice(idx, 1);
-        }
-        return { ...prev, [name]: arr };
-      });
-    } else {
-      setAnswers(prev => ({ ...prev, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setAnswers(prev => ({ ...prev, [name]: value }));
   };
 
   return (
   <section className="relative flex flex-col items-center justify-center min-h-screen px-2 py-4 sm:px-4 sm:py-8" style={{backgroundImage: 'url(/bg.svg)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '140px', paddingTop: '80px'}}>
+    {/* Flash Notification */}
+    {notification && (
+      <div className={`fixed top-4 right-4 z-50 max-w-sm p-4 rounded-lg shadow-lg font-press-start text-xs transition-all duration-300 ${
+        notification.type === 'success'
+          ? 'bg-green-600 text-white border-2 border-green-800'
+          : 'bg-red-600 text-white border-2 border-red-800'
+      }`}>
+        <div className="flex items-center justify-between">
+          <span>{notification.message}</span>
+          <button
+            onClick={() => setNotification(null)}
+            className="ml-3 text-white hover:text-gray-200 font-bold"
+          >
+            ×
+          </button>
+        </div>
+      </div>
+    )}
+
     {/* Logo in top-left corner */}
     <div className="absolute top-0 left-0 z-20 p-2 sm:p-4">
        <button
@@ -318,7 +366,7 @@ const SurveySection: React.FC = () => {
          <Image src="/logo.svg" alt="OriginForge Logo" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-contain cursor-pointer" priority />
        </button>
     </div>
-  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 220px)', /* keep content above grass and logo */ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '60px' }}>
+  <div className="w-full max-w-md mx-auto relative z-30" style={{ maxHeight: 'calc(100vh - 220px)', /* keep content above grass and logo */ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', marginTop: '40px' }}>
       <form
         className="p-0 w-full flex flex-col gap-4 text-[0.85rem] sm:text-[1rem]"
         style={{
@@ -327,11 +375,12 @@ const SurveySection: React.FC = () => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           borderRadius: '1rem',
-          minHeight: '420px',
-          maxHeight: 'calc(100vh - 260px)',
-          /* removed overflowY: 'auto' */
-          justifyContent: 'center',
+          minHeight: '480px',
+          maxHeight: 'calc(100vh - 180px)',
+          overflowY: 'auto',
+          justifyContent: 'flex-start',
           paddingBottom: '24px',
+          paddingTop: '8px',
         }}
         onSubmit={e => e.preventDefault()}
       >
@@ -339,18 +388,18 @@ const SurveySection: React.FC = () => {
         <div className="flex flex-col gap-3">
           {/* Only show label if not email or not on share card */}
           {current.type !== 'email' && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow pt-4" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)' }}>{current.label}</div>
+            <div className="font-press-start text-xs sm:text-sm md:text-base text-yellow-700 mb-3 drop-shadow pt-2 px-2" style={{ whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: 'center', fontFamily: 'var(--font-press-start)', lineHeight: '1.4' }}>{current.label}</div>
           )}
           {current.type === 'email' && !showShareCard && (
             <div className="w-full px-4 sm:px-6">
-              <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{current.label}</div>
-              <input 
-                type="email" 
-                name={current.name} 
-                className="p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full" 
-                required 
-                value={answers[current.name] || ''} 
-                onChange={handleChange} 
+              <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow">{"Email*:"}</div>
+              <input
+                type="email"
+                name={current.name}
+                className="p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full"
+                required
+                value={answers[current.name] || ''}
+                onChange={handleChange}
               />
             </div>
           )}
@@ -360,11 +409,11 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'radio' && current.options && (
-            <div className="flex flex-col gap-2 px-4">
+            <div className="flex flex-col gap-1 px-2 sm:px-4">
               {current.options.map(opt => {
                 const checked = answers[current.name] === opt;
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
+                  <label key={opt} className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: 'clamp(0.65rem, 2.5vw, 0.9rem)', backgroundColor: '#D0941C', lineHeight: '1.3' }}>
                     <input
                       type="radio"
                       name={current.name}
@@ -387,7 +436,7 @@ const SurveySection: React.FC = () => {
               {current.options.map(opt => {
                 const checked = Array.isArray(answers[current.name]) && answers[current.name]?.includes(opt);
                 return (
-                  <label key={opt} className="flex items-center gap-2 px-4 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: '0.95rem', backgroundColor: '#D0941C' }}>
+                  <label key={opt} className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded border border-amber-900 hover:bg-amber-700 cursor-pointer text-white font-press-start" style={{ minHeight: '40px', fontSize: 'clamp(0.65rem, 2.5vw, 0.9rem)', backgroundColor: '#D0941C', lineHeight: '1.3' }}>
                     <input
                       type="checkbox"
                       name={current.name}
@@ -403,30 +452,17 @@ const SurveySection: React.FC = () => {
                   </label>
                 );
               })}
-              {current.other && Array.isArray(answers[current.name]) && answers[current.name]?.includes('Other') && (
-                <div className="pl-7 pt-2">
-                  <input
-                    type="text"
-                    className="pixel-border border-2 border-yellow-400 rounded-xl px-4 py-3 bg-[#23232b] text-yellow-100 focus:border-yellow-600 font-press-start text-xs sm:text-sm placeholder-yellow-400 shadow w-[260px] sm:w-[320px] h-[44px] sm:h-[52px]"
-                    placeholder="Type your answer..."
-                    name={current.name + '_other'}
-                    value={answers[current.name + '_other'] || ''}
-                    onChange={handleChange}
-                    maxLength={40}
-                  />
-                </div>
-              )}
             </div>
           )}
           {current.type === 'text' && (
             <div className="w-full px-4 sm:px-6">
-              <textarea 
-                maxLength={current.maxLength} 
-                className={current.className || "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full min-h-24"} 
-                placeholder={`${current.maxLength} characters max`} 
-                name={current.name} 
-                value={answers[current.name] || ''} 
-                onChange={handleChange} 
+              <textarea
+                maxLength={current.maxLength}
+                className={current.className || "p-4 border-2 border-yellow-300 rounded-xl bg-white text-yellow-900 focus:border-yellow-600 font-press-start text-sm sm:text-base w-full min-h-24"}
+                placeholder={`${current.maxLength} characters max`}
+                name={current.name}
+                value={answers[current.name] || ''}
+                onChange={handleChange}
                 style={{ resize: 'vertical' }}
               />
             </div>
@@ -466,8 +502,9 @@ const SurveySection: React.FC = () => {
               {step === questions.length - 2 ? (
                 <SubmitButton
                   onClick={submitSurvey}
-                  disabled={!isAnswered}
-                  className="mx-4"
+                  disabled={!isAnswered || isSubmitting}
+                  isLoading={isSubmitting}
+                  className={`mx-4 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 />
               ) : (
                 <NextButton
