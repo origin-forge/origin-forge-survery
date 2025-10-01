@@ -375,7 +375,7 @@ const SurveySection: React.FC = () => {
           )}
           {current.type === 'email' && showShareCard && (
             <div className="font-press-start text-sm sm:text-base text-yellow-700 mb-3 drop-shadow text-center px-2" style={{ lineHeight: '1.6' }}>
-              No emails here, just good vibes and epic loot!
+              Goodies Time 🎁<br />
             </div>
           )}
           {current.type === 'radio' && current.options && (
