@@ -41,7 +41,7 @@ const JoinDiscordButton: React.FC<JoinDiscordButtonProps> = ({ onClick, classNam
           y="30"
           textAnchor="middle"
           fill="white"
-          fontSize="12"
+          fontSize="14"
           fontFamily="'Press Start 2P', 'Courier New', monospace"
         >
           JOIN DISCORD

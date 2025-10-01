@@ -374,7 +374,7 @@ const SurveySection: React.FC = () => {
             </div>
           )}
           {current.type === 'email' && showShareCard && (
-            <div className="font-press-start text-base sm:text-lg text-yellow-700 mb-2 drop-shadow text-center">
+            <div className="font-press-start text-sm sm:text-base text-yellow-700 mb-3 drop-shadow text-center px-2" style={{ lineHeight: '1.6' }}>
               No emails here, just good vibes and epic loot!
             </div>
           )}
@@ -434,28 +434,38 @@ const SurveySection: React.FC = () => {
         {/* Navigation Arrows */}
         {current.type !== 'discord' && (
           showShareCard ? (
-            <div className="flex flex-col gap-4 items-center justify-center mt-8 mb-8">
-              <ShareTwitterButton
-                onClick={() => {
-                  // Array of 3 different tweet options
-                  const tweetOptions = [
-                    'Just discovered @0xoriginforge at @token2049 Singapore - they\'re building the future of gaming identity with DID-based OAuth! 🎮⛓️\nOne login across ALL games + AI-powered insights + blockchain ownership = gaming finally done right\nWeb3 Foundation backed | Built on @Polkadot 🚀\n#Token2049 #Web3Gaming #DID #GamingInfrastructure #Polkadot #Singapore',
-                    'Met the @0xoriginforge team at @token2049! They\'re solving the fragmented gaming identity problem with decentralized IDs 🔐\nNo more juggling multiple accounts. Your gaming identity, your data, your control 💪\nBuilt by @Polkadot Academy grads with Web3 Foundation grant ✨\n#Token2049 #DecentralizedIdentity #Web3 #GamingWeb3 #BlockchainGaming #Singapore',
-                    '🎮 Gaming + Blockchain done RIGHT!\n@0xoriginforge at @token2049 is building DID OAuth for games - unified login, cross-game reputation, AI insights, all on-chain\nFinally, gamers OWN their identity & achievements 🔥\nBuilt on @Polkadot substrate!\n#Token2049 #DID #Web3Gaming #Polkadot #DecentralizedGaming #Singapore #GameFi'
-                  ];
+            <>
+              <div className="flex flex-col gap-4 items-center justify-center mt-4 mb-4">
+                <ShareTwitterButton
+                  onClick={() => {
+                    // Array of 3 different tweet options
+                    const tweetOptions = [
+                      'Just discovered @0xoriginforge at @token2049 Singapore - they\'re building the future of gaming identity with DID-based OAuth! 🎮⛓️\nOne login across ALL games + AI-powered insights + blockchain ownership = gaming finally done right\nWeb3 Foundation backed | Built on @Polkadot 🚀\n#Token2049 #Web3Gaming #DID #GamingInfrastructure #Polkadot #Singapore',
+                      'Met the @0xoriginforge team at @token2049! They\'re solving the fragmented gaming identity problem with decentralized IDs 🔐\nNo more juggling multiple accounts. Your gaming identity, your data, your control 💪\nBuilt by @Polkadot Academy grads with Web3 Foundation grant ✨\n#Token2049 #DecentralizedIdentity #Web3 #GamingWeb3 #BlockchainGaming #Singapore',
+                      '🎮 Gaming + Blockchain done RIGHT!\n@0xoriginforge at @token2049 is building DID OAuth for games - unified login, cross-game reputation, AI insights, all on-chain\nFinally, gamers OWN their identity & achievements 🔥\nBuilt on @Polkadot substrate!\n#Token2049 #DID #Web3Gaming #Polkadot #DecentralizedGaming #Singapore #GameFi'
+                    ];
 
-                  // Randomly select one tweet
-                  const randomTweet = tweetOptions[Math.floor(Math.random() * tweetOptions.length)];
-                  const tweetText = encodeURIComponent(randomTweet);
-                  window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
-                }}
-                className="w-full max-w-xs"
-              />
-              <JoinDiscordButton
-                onClick={() => window.open('https://discord.gg/rVHBqhJvpX', '_blank')}
-                className="w-full max-w-xs"
-              />
-            </div>
+                    // Randomly select one tweet
+                    const randomTweet = tweetOptions[Math.floor(Math.random() * tweetOptions.length)];
+                    const tweetText = encodeURIComponent(randomTweet);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                  }}
+                  className="w-full max-w-xs"
+                />
+                <JoinDiscordButton
+                  onClick={() => window.open('https://discord.gg/rVHBqhJvpX', '_blank')}
+                  className="w-full max-w-xs"
+                />
+              </div>
+              <div className="bg-[#FFE5B4] border-4 border-[#FFD700] p-3 sm:p-4 mb-4 mx-4 shadow-lg rounded-lg">
+                <p className="text-xs sm:text-sm text-[#8B4513] font-bold font-press-start mb-2" style={{ lineHeight: '1.5' }}>
+                  🎁 HOW TO EARN GOODIES ??
+                </p>
+                <p className="text-xs text-black font-press-start" style={{ lineHeight: '1.5' }}>
+                  Post about us on X and join our discord to collect goodies from us!!
+                </p>
+              </div>
+            </>
           ) : (
             <div className="flex justify-between mt-4 pb-4">
               {step === 0 ? (

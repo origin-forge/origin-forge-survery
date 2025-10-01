@@ -86,11 +86,20 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
         `}</style>
         <div className="absolute inset-0 bg-[#8B4513]/80" />
         <div className={`${pixelPanel} relative z-10 text-center w-full max-w-xs sm:max-w-md mx-auto flex flex-col`}>
-          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#8B4513] mb-4 sm:mb-6 pixel-font leading-relaxed">
-            No emails here, just good vibes and epic loot!
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#8B4513] mb-3 sm:mb-4 pixel-font leading-relaxed">
+            Share about us on X and grab your exclusive goodies!
           </h2>
 
-          <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+          <div className="bg-[#FFE5B4] border-4 border-[#FFD700] p-3 sm:p-4 mb-4 sm:mb-6 shadow-lg">
+            <p className="text-[0.65rem] sm:text-xs text-[#8B4513] font-bold pixel-font leading-relaxed mb-2">
+              🎁 HOW TO EARN GOODIES
+            </p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] text-black pixel-font leading-relaxed">
+              Post about us on X using the button below and collect your rewards directly from us!
+            </p>
+          </div>
+
+          <div className="space-y-2 sm:space-y-3">
             <button
               onClick={() => {
                 const tweets = [
@@ -113,12 +122,6 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
             >
               JOIN DISCORD
             </button>
-          </div>
-
-          <div className="bg-[#FFF8DC] border-4 border-black p-3 sm:p-4">
-            <p className="text-[0.6rem] sm:text-xs text-black pixel-font leading-relaxed">
-              💡 Post about us on X and collect exclusive goodies from us directly!
-            </p>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import TakeSurveyButton from './TakeSurveyButton';
+import AboutUsButton from './AboutUsButton';
 
 const HeroMobile: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
@@ -124,6 +125,12 @@ const HeroMobile: React.FC = () => {
 
         {/* Buttons Container */}
         <div className="buttons-wrapper mt-4 mb-4 py-2 fixed-content">
+          <div className="button-container-small">
+            <AboutUsButton
+              onClick={() => router.push('/about')}
+              className="w-full"
+            />
+          </div>
           <div className="button-container">
             <TakeSurveyButton
               onClick={handleTakeSurvey}
