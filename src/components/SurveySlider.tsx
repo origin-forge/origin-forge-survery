@@ -65,17 +65,61 @@ export default function SurveySlider({ onClose }: { onClose?: () => void }) {
 
   if (showEnd) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center z-50 p-2 sm:p-0">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-        <div className={`${pixelPanel} relative z-10 text-center w-full max-w-xs sm:max-w-md mx-auto`}>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Thank You! 🎉</h2>
-          <p className="text-gray-600 mb-6">Your responses have been recorded. We&apos;ll be in touch soon!</p>
-          <button
-            onClick={onClose}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-200"
-          >
-            Finish
-          </button>
+      <div className="fixed inset-0 flex items-center justify-center z-50 p-4 sm:p-6">
+        <style jsx global>{`
+          @font-face {
+            font-family: 'PressStart2P';
+            src: url('/PressStart2P-Regular.ttf') format('truetype');
+          }
+          .pixel-font {
+            font-family: 'PressStart2P', monospace;
+            font-size: 0.65rem;
+            line-height: 1.5;
+            letter-spacing: -0.5px;
+          }
+          @media (min-width: 640px) {
+            .pixel-font {
+              font-size: 0.75rem;
+              line-height: 1.6;
+            }
+          }
+        `}</style>
+        <div className="absolute inset-0 bg-[#8B4513]/80" />
+        <div className={`${pixelPanel} relative z-10 text-center w-full max-w-xs sm:max-w-md mx-auto flex flex-col`}>
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#8B4513] mb-4 sm:mb-6 pixel-font leading-relaxed">
+            No emails here, just good vibes and epic loot!
+          </h2>
+
+          <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+            <button
+              onClick={() => {
+                const tweets = [
+                  "Just completed the @OriginForge survey! 🎮 Excited to see what's coming next! #GameDev #IndieGame",
+                  "Shared my feedback with @OriginForge! 🚀 Can't wait to see this project evolve! #Gaming #Web3",
+                  "Done with the @OriginForge survey! 🎯 Looking forward to the epic loot! #GameFi #Crypto"
+                ];
+                const randomTweet = tweets[Math.floor(Math.random() * tweets.length)];
+                const tweetText = encodeURIComponent(randomTweet);
+                window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+              }}
+              className="w-full bg-[#D4A574] hover:bg-[#B8935F] text-black font-bold py-3 sm:py-4 px-4 sm:px-6 border-4 border-black pixel-font transition-colors duration-200"
+            >
+              SHARE ON X!
+            </button>
+
+            <button
+              onClick={() => window.open('https://discord.gg/your-discord-link', '_blank')}
+              className="w-full bg-[#D4A574] hover:bg-[#B8935F] text-black font-bold py-3 sm:py-4 px-4 sm:px-6 border-4 border-black pixel-font transition-colors duration-200"
+            >
+              JOIN DISCORD
+            </button>
+          </div>
+
+          <div className="bg-[#FFF8DC] border-4 border-black p-3 sm:p-4">
+            <p className="text-[0.6rem] sm:text-xs text-black pixel-font leading-relaxed">
+              💡 Post about us on X and collect exclusive goodies from us directly!
+            </p>
+          </div>
         </div>
       </div>
     );

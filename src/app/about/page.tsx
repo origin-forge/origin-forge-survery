@@ -190,7 +190,7 @@ export default function AboutPage() {
             {activeSection === 'join' && (
               <div className="w-full text-center description-section">
                 <h2 className="font-press-start text-base sm:text-xl md:text-2xl lg:text-3xl text-yellow-700 mb-4 sm:mb-6" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>JOIN THE REVOLUTION</h2>
-                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">We&rsquo;re raising $1M to revolutionize gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
+                <p className="text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">We&rsquo;re currently in the development phase, building the future of gaming authentication. <strong>Join our journey:</strong> 50 studios in Year 1, scaling to 500+ by Year 3, building the infrastructure layer that powers the future of gaming. Game developers save $200K per project. Players get unified identity. Everyone wins.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <TakeSurveyButton
                     onClick={() => router.push('/survey')}
