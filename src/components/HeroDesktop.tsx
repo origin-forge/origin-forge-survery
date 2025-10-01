@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import TakeSurveyButton from './TakeSurveyButton';
-import AboutUsButton from './AboutUsButton';
 
 const HeroDesktop: React.FC = () => {
   const router = useRouter();
@@ -100,14 +99,8 @@ const HeroDesktop: React.FC = () => {
                 Craft decentralized identities, own achievements, build a <br />verifiable profile.
               </div>
               
-              {/* About Us and Take Survey Buttons */}
+              {/* Take Survey Button */}
               <div className="flex flex-row gap-4 sm:gap-6 mt-4 sm:mt-6 mb-4 sm:mb-6">
-                <div className="button-container-small">
-                  <AboutUsButton
-                    onClick={() => router.push('/about')}
-                    className="w-full"
-                  />
-                </div>
                 <div className="button-container">
                   <TakeSurveyButton
                     onClick={handleTakeSurvey}
